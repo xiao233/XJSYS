@@ -1,0 +1,37 @@
+.header_div{
+	height:100px;
+	border: solid #ff00ff 2px;
+}
+
+.header-content-style{
+	padding-top: 20px;
+	font-size: 40px;
+}
+
+.footer-style{
+	width:100%;
+	height:60px;
+	padding-top: 20px;
+	float: left;
+	background-color: #f8f8f8;
+}
+
+.login-style{
+	width:100%;
+	height:500px;
+	float: left;
+}
+
+.body_left{
+	height:600px;
+	width:20%;
+	float: left;
+	border: solid #ff00ff 2px;
+}
+
+.body_right{
+	height:600px;
+	width:80%;
+	float: left;
+	border: solid green 2px;
+}
