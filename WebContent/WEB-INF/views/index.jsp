@@ -18,9 +18,10 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#login").submit(function () {
+			$("input[type='submit']").click(function () {
 				login();
-			});
+			});	
+			
 		});
 	</script>
 </body>

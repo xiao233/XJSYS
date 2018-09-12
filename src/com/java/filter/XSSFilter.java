@@ -18,9 +18,9 @@ public class XSSFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain fc)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		fc.doFilter(req, res);
 		
 	}
 

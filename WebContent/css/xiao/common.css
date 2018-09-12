@@ -1,6 +1,7 @@
 .header_div{
 	height:100px;
-	border: solid #ff00ff 2px;
+	background-color: black;
+	color:#ff00ff;
 }
 
 .header-content-style{
@@ -20,8 +21,27 @@
 	width:100%;
 	height:500px;
 	float: left;
+	background-image: url("../../images/body/timg.jpg");
+	background-size: 100% 500px;
 }
 
+.login-style>div{
+	border:solid 5px gray;
+	border-radius:5px;
+	width:325px;
+	height:300px;
+	position: absolute;
+	top: 200px;
+	left:38%;
+	background-color: #f8f8f8;
+}
+	
+#login-div1{
+	text-align: center;
+}
+.code-style{
+	width:75px;
+}	
 .body_left{
 	height:600px;
 	width:20%;
@@ -34,4 +54,24 @@
 	width:80%;
 	float: left;
 	border: solid green 2px;
+}
+
+.font-spacing0{
+	letter-spacing: 5px;
+}
+
+.font-spacing1{
+	letter-spacing: 10px;
+}
+
+.font-spacing2{
+	letter-spacing: 25px;
+}
+
+.margin-left-size0{
+	margin-left: 20px;
+}
+
+.margin-left-size1{
+	margin-left: 40px;
 }
