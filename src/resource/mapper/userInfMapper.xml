@@ -5,5 +5,58 @@
 <mapper namespace="com.java.dao.UserInfDao">
     <!--地址数据库字段和实体类对的映射关系-->
     <resultMap id="userInfMap" type="UserInf">
+    	<id column="USER_SEQ" property="userSeq"/>
+    	<result column="USER_NAME" property="userName"/>
+    	<result column="USER_PAW" property="userPaw"/>
+    	<result column="SYSID" property="sysid"/>
+    	<result column="BACK_URL" property="backUrl"/>
+    	<result column="CONFIRM_FLAG" property="confirmFlag"/>
     </resultMap>
+    
+    <sql id="columns">
+    	USER_SEQ,USER_NAME,USER_PAW,SYSID,CONFIRM_FLAG
+    </sql>
+    
+    <sql id="conditions">
+    	<if test="userSeq != null and userSeq != ''">
+    		AND USER_SEQ=#{}
+    	</if>
+    	<if test="userName != null and userName != ''">
+    		AND USER_NAME=#{userName}
+    	</if>
+    	<if test="sysid != null and sysid != ''">
+    		AND SYSID=#{sysid}
+    	</if>
+    	<if test="backUrl != null and backUrl != ''">
+    		AND BACK_URL=#{backUrl}
+    	</if>
+    </sql>
+    
+    <select id="checkUserInf" parameterType="UserInf" resultMap="userInfMap">
+    	select 
+    	<include refid="columns"></include>
+    	from USER_INF
+    	<where>
+    		<if test="sysid != null and sysid != ''">
+    			AND SYSID=#{sysid}
+    		</if>
+    		<if test="userName != null and userName != '' and userPaw != null and userPaw != ''">
+    			AND USER_NAME=#{userName} 
+    			AND USER_PAW=#{userPaw} 
+    		</if>
+    	</where>
+    </select>
+    
+    <!-- 插入数据 -->
+    <insert id="register" parameterType="UserInf">
+    	insert into USER_INF
+    		(USER_SEQ,USER_NAME,USER_PAW,SYSID,BACK_URL,CONFIRM_FLAG)
+    		VALUES
+    		(#{userSeq},
+    		#{userName},
+    		#{userPaw},
+    		#{sysid},
+    		#{backUrl},
+    		#{confirmFlag})
+    </insert>
 </mapper>

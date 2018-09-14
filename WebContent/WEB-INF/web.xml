@@ -27,6 +27,17 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!-- 统一处理出现异常的页面显示 -->
+  <error-page>
+  	<exception-type>java.lang.Throwable</exception-type>
+  	<location>/WEB-INF/views/error/error.jsp</location>
+  </error-page>
+  
+  <!-- 请求未找到提示页面 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/error/error404.jsp</location>
+  </error-page>
   
   <listener>
   	<listener-class>com.java.listener.InitListener</listener-class>

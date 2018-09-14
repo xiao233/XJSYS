@@ -4,9 +4,28 @@
 	color:#ff00ff;
 }
 
+.header_div>div{
+	height:80px;
+	float:left;
+	color:white;
+}
+
 .header-content-style{
 	padding-top: 20px;
 	font-size: 40px;
+}
+
+.header-user{
+	background-color:white;
+	height:40px;
+	width:40px;
+	border-radius:50%;
+	position: absolute;
+	right: 10px;
+	top:35px;
+	color:#ff00ff;
+	text-align: center;
+	padding-top: 12px;
 }
 
 .footer-style{
@@ -25,29 +44,56 @@
 	background-size: 100% 500px;
 }
 
-.login-style>div{
+#login-left{
 	border:solid 5px gray;
 	border-radius:5px;
 	width:325px;
-	height:300px;
+	height:320px;
 	position: absolute;
 	top: 200px;
-	left:38%;
 	background-color: #f8f8f8;
+}
+
+
+.login-mid{
+	position: absolute;
+	top:250px;
+	left:840px;
+	width:40px;
+	height:16px;
+	background-color: red;
+	border-radius: 50%  ;
+	text-align: center;
+}
+.login-right{
+	position: absolute;
+	top:250px;
+	left:880px;
+	width:200px;
+	background-color: #f8f8f8;
+	border-radius: 20% 5px 5px 20% ;
+	padding-left: 20px;
 }
 	
 #login-div1{
 	text-align: center;
 }
+
 .code-style{
 	width:75px;
+}
+#bornCodeImage{
+	width:75px;
+	height:26px;
 }	
+
 .body_left{
 	height:600px;
 	width:20%;
 	float: left;
 	border: solid #ff00ff 2px;
 }
+
 
 .body_right{
 	height:600px;
@@ -74,4 +120,38 @@
 
 .margin-left-size1{
 	margin-left: 40px;
+}
+
+.warning-info{
+	font-family: 楷体;
+}
+
+a{
+	cursor: pointer;
+}
+
+.content-dn{
+	display: none;
+}
+
+.error-style{
+	width:100%;
+	height:500px;
+	text-align: center;
+	font-size: 30px;
+	color:red;
+	padding-top: 20px;
+}
+.error-404{
+	background-image: url("../../images/error/404.jpg");
+	background-size: 50% 500px;
+}
+
+.error-500{
+	background-image: url("../../images/error/500.jpg");
+	background-size: 100% 500px;
+}
+
+body{
+	min-width: 400px;
 }

@@ -58,7 +58,7 @@
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
-	    <version>5.1.38</version>
+	    <version>5.1.45</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
@@ -75,6 +75,20 @@
 	    <groupId>javax.activation</groupId>
 	    <artifactId>activation</artifactId>
 	    <version>1.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.8.8.1</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->

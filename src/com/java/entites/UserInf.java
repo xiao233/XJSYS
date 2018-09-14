@@ -1,12 +1,35 @@
 package com.java.entites;
 
+import com.java.constants.CommonConstants;
+
 public class UserInf {
 	private String userSeq;
 	private String userName;
 	private String userPaw;
+	private String userPawNew;
 	private String sysid;
 	private String backUrl;
 	private String confirmFlag;
+	private String codeImage;
+	private String isLogin;
+	
+	
+	
+	public String getIsLogin() {
+		if(isLogin==null || isLogin == "") {
+			isLogin = CommonConstants.IS_LOGIN;
+		}
+		return isLogin;
+	}
+	public void setIsLogin(String isLogin) {
+		this.isLogin = isLogin;
+	}
+	public String getCodeImage() {
+		return codeImage;
+	}
+	public void setCodeImage(String codeImage) {
+		this.codeImage = codeImage;
+	}
 	public String getUserSeq() {
 		return userSeq;
 	}
@@ -24,6 +47,12 @@ public class UserInf {
 	}
 	public void setUserPaw(String userPaw) {
 		this.userPaw = userPaw;
+	}
+	public String getUserPawNew() {
+		return userPawNew;
+	}
+	public void setUserPawNew(String userPawNew) {
+		this.userPawNew = userPawNew;
 	}
 	public String getSysid() {
 		return sysid;

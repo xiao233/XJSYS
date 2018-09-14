@@ -21,10 +21,13 @@
     <context:component-scan base-package="com.java"/>
     
     <!--开启Spring mvc的注解模式-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven/>
+    
+    <!-- 开启事物注解配置 -->
+    <tx:annotation-driven/>
     
     <!--引入外部文件-->
-	<context:property-placeholder location="classpath:sql.properties"></context:property-placeholder>
+	<context:property-placeholder location="classpath:sql.properties"/>
 	
 	<!--配置数据库连接池-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -67,5 +70,6 @@
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/page/**" location="/pages/"/>
+    <mvc:resources mapping="/pages/**" location="/pages/"/>
+    <mvc:resources mapping="/fonts/**" location="/fonts/"/>
 </beans>
