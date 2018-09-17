@@ -1,0 +1,15 @@
+#可疑关键字
+`,javascript,@import,x:script,window.location,jscript,vbscript,http-equiv,![cdata[,with(document),
+#可疑标签
+<iframe,<frameset,<marquee,<form,<object,<applet,<embed,<meta,<value,
+#可疑函数
+$.get(,$.getscript(,alert(,unescape(,exescript(,eval(,prompt(,msgbox(,
+#可疑事件
+autofocus=,onabort=,onactivate=,onafterorint=,onafterupdate=,onbeforeactivate=,onbeforecopy=,onbeforecut=,onbeforedeactivate=,
+onbeforeeditfocus=,onbeforepaste=,onbeforeint=,onbeforeprint=,onbeforeunload=,onbeforeupdate=,onblur=,onbounce=,oncellchange=,
+onchange=,onclick=,oncontextmenu=,oncontrolselect=,oncopy=,oncut=,ondataavaible=,ondatasetcomplete=,ondblclick=,ondeactivate=,
+ondrrag=,ondragend=,ondragenter=,ondragleave=,ondragover=,ondragstart=,ondrop=,onerror=,onerrorupdate=,onfilterchange=,onfinish=,
+onfocus=,onfocusout=,onhelp,onkeydown=,onkeypress=,onkeyup=,onlayoutcomplete=,onload=,onlosecapture=,onmousedown=,onmouseenter=,
+onmouseleave=,onmousemove=,onmousemove=,onmouseout=,onmouseover=,onmouseup=,onreadystatechange=,onreset=,onresize=,onresizeend=,
+onresizestart=,onrowenter=,onrowexit=,onrowsdelete=,onrowsinserted=,onscroll=,onselect=,onselectionchange=,onselectstart=,onstart=,
+onstop=,onsubmit=,onunload=,

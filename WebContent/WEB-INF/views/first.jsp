@@ -16,6 +16,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div>
 		<div class="body_left">
+			<jsp:include page="/WEB-INF/views/common/menuBar.jsp"></jsp:include>
 		</div>
 		<div class="body_right">
 			<%-- <iframe width="100%" src="${pageContext.request.contextPath }/login" height="100%"></iframe> --%>

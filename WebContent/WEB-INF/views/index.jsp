@@ -50,6 +50,9 @@
 				var divWidth=$("#login-left").width();
 				//登录注册输入窗口自适应浏览器窗口
 				$("#login-left").css("left",(scrollWidth-divWidth)/2+"px");
+				//提示信息位置自适应
+				$(".login-mid").css("left",((scrollWidth-divWidth)/2+325)+"px");
+				$(".login-right").css("left",((scrollWidth-divWidth)/2+365)+"px");
 			}
 			//浏览器窗口改变大小事件
 			$(window).resize(function(){
