@@ -31,7 +31,7 @@
 			<br/>
 			<span class="warning-info">1.请确保输入密码环境安全</span>
 			<br/>
-			<span class="warning-info">2.如若忘记密码，点击<a class="font-spacing0">找回密码</a></span>
+			<span class="warning-info">2.如若忘记密码，点击<a class="font-spacing0 font-weight-style0">找回密码</a></span>
 		</div>
 	</div>
 	<div class=" msg-content login-mid content-dn">···</div>

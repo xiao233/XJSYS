@@ -47,6 +47,9 @@
 			loginDiv();
 			
 			function loginDiv(){
+				//高度自适应
+				$(".login-style").css("height",($(document).height()-160)+"px")
+				$(".login-style").css("background-size","100% "+($(document).height()-160)+"px")
 				var divWidth=$("#login-left").width();
 				//登录注册输入窗口自适应浏览器窗口
 				$("#login-left").css("left",(scrollWidth-divWidth)/2+"px");

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/xiao/body-left.css">
-<div>
+<div class="menu-style">
 	<ul>
-		<li class="menu-lever-one" data-toggle="tooltip" data-placement="bottom" title="全部詹卡">
+		<li class="menu-lever-one" data-toggle="tooltip" data-placement="bottom">
 			<span class="glyphicon glyphicon-th-list"> 菜单</span>
 		</li>
 	</ul>
@@ -28,3 +28,10 @@
 		</li>
 	</ul>
 </div>
+<script>
+	;(function(){
+		$("ul:first").bind("click",function(){
+			alert();
+		})
+	})(jQuery);
+</script>
