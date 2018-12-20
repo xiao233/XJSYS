@@ -19,6 +19,7 @@
 		<div class="header-user " data-toggle="tooltip"
 		data-placement="bottom" title="${userInf.userName }">
 			<span class="glyphicon glyphicon-user"></span>
+			<span id = "onOffBubble">0</span>
 		</div>
 	</a>
 </c:if>

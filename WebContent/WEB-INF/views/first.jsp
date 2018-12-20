@@ -23,19 +23,59 @@
 		</div>
 		<div class="body_right">
 			<%-- <iframe width="100%" src="${pageContext.request.contextPath }/login" height="100%"></iframe> --%>
+			<iframe width="100%" frameborder="no" border="0"  src ="${pageContext.request.contextPath }/app/app.html#!/welcome"  height="100%"></iframe>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	
 	<c:forEach begin="0" end="50" step="1" var="i">
-		<div class="bubble-style">${i}</div>
+		<div class="bubble-style no-show-style">${i}</div>
 	</c:forEach>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			var root ="${pageContext.request.contextPath }/app/app.html#!/"
+			
+			
+				
+			/* 点击最小子菜单 */
+			$(".menu-lever-two").bind("click",function(){
+				var url = root;
+				$(this).siblings().css("color","#ff8c3c");
+				$(this).css("color","blue");
+				var route = $(this).find("span").first().text();
+				if(route!=""&&route!=null){
+					url+=route+"?time="+new Date().getTime();
+				}else{
+					url+="error";
+				}
+				$("iframe").prop("src",url);
+				//window.open(url);
+			})
+			
+			
+			
 			$(".body_left,.body_right").css("height",($(document).height()-160)+"px")
+			$(".body_right").css("width",($(document).width()-$(".body_left").width()-4)+"px")
 			
-			setInterval("bubbleFunction()", 1000);
+			$(window).resize(function(){
+				window.location.href="${pageContext.request.contextPath}/first";
+			});
 			
+			var setTime = 0;
+			
+			$(".header-user").click(function(){
+				var value = $("#onOffBubble").text()*1;
+				if(value===1){
+					clearInterval(setTime);
+					$(".bubble-style").addClass("no-show-style");
+					value=0;
+				}else{
+					setTime = setInterval("bubbleFunction()", 1000);
+					value=1;
+				}
+				$("#onOffBubble").text(value)
+			});
 		});
 		
 		//改变气泡的位置和颜色
@@ -46,6 +86,7 @@
 			for(var i=0;i<$(".bubble-style").length;i++){
 				bubbleEach(i);
 			}
+			$(".bubble-style").removeClass("no-show-style");
 		}
 		
 		function bubbleEach(index){

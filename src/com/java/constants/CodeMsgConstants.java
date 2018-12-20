@@ -64,4 +64,25 @@ public class CodeMsgConstants {
 	 */
 	public static final String CODE_BORN_FAIL = "0005";
 	public static final String CODE_BORN_FAIL_MSG = " 生成图片验证码失败！";
+	
+	
+	/**
+	 * 查询成功，但没有记录
+	 */
+	public static final String QUERY_SUCC_NO_RECORD = "Q0001";
+	public static final String QUERY_SUCC_NO_RECORD_MSG = "查询成功，但没有记录！";
+	
+	/**
+	 * 查询成功，有记录
+	 */
+	public static final String QUERY_SUCC_HAS_RECORD = "Q0000";
+	public static final String QUERY_SUCC_HAS_RECORD_MSG = "查询成功，且有记录！";
+	
+	
+	/**
+	 * 查询失败
+	 */
+	public static final String QUERY__FAILD= "Q0002";
+	public static final String QUERY__FAILD_MSG = "查询失败!";
+	
 }

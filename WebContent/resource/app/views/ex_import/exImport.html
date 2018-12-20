@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+<div ng-controller="exImportCtrl" ng-init="init()">
+	<div class=" content-header font-style1" >
+		<span class="margin-left-style1">XR平台 / 小功能 / 导入、导出服务/</span>
+	</div>
+	<div>
+	
+		<form method="post" enctype="multipart/form-data" name="myform">
+			<table border="solid">
+				<caption class="info-center">说明：导入的文件类型只能是excel对应的文件格式</caption>
+				<tr>
+					<td class="td-backcolor">要导入到的表：</td>
+					<td>
+						<select ng-model="importTableName" id="importTableName">
+							<option value="">-请选择-</option>
+							<option value="{{tableInf.tableName}}" ng-repeat="tableInf in tableInfs">{{tableInf.tableNameCn}}</option>
+						</select>
+					</td>
+					<td class="td-backcolor">要导入的文件：</td>
+					<td class="td-file"><input type="file" name="fileName" id="fileName" /></td>
+					<td class="td-backcolor-ora">
+						<input type="submit" value="导入文件" ng-click="importFile()" class="td-backcolor-ora"/>
+					</td>
+					<td class="td-backcolor">
+						导入状态
+					</td>
+					<td>
+						<input type="text" ng-model="importStatu" readonly="readonly" class="input-center"/>
+					</td>
+				</tr>
+			</table>
+			
+			<p>{{importTableName}}</p>
+		</form>
+	</div>
+	<p>{{a}}</p>
+</div>

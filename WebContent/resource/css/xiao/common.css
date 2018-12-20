@@ -32,6 +32,10 @@
 	padding-top: 12px;
 }
 
+#onOffBubble{
+	display:none;
+}
+
 .footer-style{
 	width:100%;
 	height:60px;
@@ -83,12 +87,14 @@
 	text-align: center;
 }
 
+/* 本开发环境不提交 */
 .code-style{
-	width:90px;
+	width:75px;
 }
+/* 本开发环境不提交 */
 #bornCodeImage{
-	width:90px;
-	height:27px;
+	width:75px;
+	height:26px;
 }	
 
 
@@ -157,4 +163,12 @@ body{
 	color:white;
 	font-weight: bold;
 	border-radius: 5px;
+}
+
+.no-show-style{
+	display:none;
+}
+
+.select-nar-color{
+	color:blue;
 }
