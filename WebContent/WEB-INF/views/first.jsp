@@ -23,7 +23,7 @@
 		</div>
 		<div class="body_right">
 			<%-- <iframe width="100%" src="${pageContext.request.contextPath }/login" height="100%"></iframe> --%>
-			<iframe width="100%" frameborder="no" border="0"  src ="${pageContext.request.contextPath }/app/app.html#!/welcome"  height="100%"></iframe>
+			<iframe name="contentFrame" width="100%" frameborder="no" border="0"  src ="${pageContext.request.contextPath }/app/app.html#!/welcome"  height="100%"></iframe>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
@@ -40,17 +40,30 @@
 				
 			/* 点击最小子菜单 */
 			$(".menu-lever-two").bind("click",function(){
+
 				var url = root;
 				$(this).siblings().css("color","#ff8c3c");
 				$(this).css("color","blue");
 				var route = $(this).find("span").first().text();
 				if(route!=""&&route!=null){
-					url+=route+"?time="+new Date().getTime();
+					url+=route;
+					//url+=route+"?times="+new Date().getTime();//加时间戳
 				}else{
 					url+="error";
 				}
-				$("iframe").prop("src",url);
-				//window.open(url);
+				var currentUrl = $("iframe").prop("src");
+				if(currentUrl.indexOf(url)>=0){
+					/*  
+						iframe只有src的值改变时才会刷新页面，
+						但只改变参数的值（如：加时间戳或者随机数）是行不通的；
+						
+						以下代码刷新当前iframe的内容（
+						ps：contentFrame是当前iframe的name属性的的取值）；
+					*/
+					contentFrame.location.reload();
+				}else{
+					$("iframe").prop("src",url);
+				}
 			})
 			
 			
