@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.java.constants.CodeMsgConstants;
 import com.java.dao.TableInfDao;
 import com.java.entites.CodeMessageResult;
-import com.java.entites.TableInf;
+import com.java.entites.TblTableInf;
 import com.java.service.TableInfService;
 
 @Service
@@ -20,13 +20,13 @@ public class TableInfServiceImpl implements TableInfService {
 	@Autowired
 	private TableInfDao tableDao;
 	@Override
-	public CodeMessageResult<TableInf> queryAll() {
+	public CodeMessageResult<TblTableInf> queryAll() {
 		
-		CodeMessageResult<TableInf> rs = new CodeMessageResult<TableInf>();
+		CodeMessageResult<TblTableInf> rs = new CodeMessageResult<TblTableInf>();
 		String code = "";
 		String msg = "";
 		try {
-		List<TableInf> list = tableDao.queryAll();
+		List<TblTableInf> list = tableDao.queryAll();
 			if(list==null||list.size()==0) {
 				code = CodeMsgConstants.QUERY_SUCC_NO_RECORD;
 				msg = CodeMsgConstants.QUERY_SUCC_NO_RECORD_MSG;

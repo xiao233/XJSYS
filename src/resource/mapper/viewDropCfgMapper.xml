@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.ViewDropCfgDao">
+    <!--地址数据库字段和实体类对的映射关系-->
+    <resultMap id="viewDropCfgMap" type="com.java.entites.ViewDropCfg">
+    	<result column="DROP_NAME" property="dropName" jdbcType="VARCHAR"/>
+    	<result column="CFG_VALUE" property="cfgValue" jdbcType="VARCHAR"/>
+    	<result column="CFG_KEY" property="cfgKey" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <select id="getDropCfg" resultMap="viewDropCfgMap" parameterType="String">
+    	SELECT DROP_NAME,CFG_VALUE,CFG_KEY
+    		FROM VIEW_DROP_CFG
+    	WHERE DROP_NAME=#{_parameter}
+    </select>
+</mapper>

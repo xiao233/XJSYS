@@ -37,4 +37,29 @@ public class StringUtils {
 		}
 		return str;
 	}
+
+	/**
+	 * 将驼峰命名法转为首字母大写命名规则
+	 * 2018-12-25 13:53:22
+	 * @param key
+	 * @return
+	 */
+	public static String changeName(String key) {
+		
+		if(isEmpty(key)) {
+			return key;
+		}
+		
+		String []strs = key.split("_");
+		String newKey = "";
+		for (int i = 0; i < strs.length; i++) {
+			if(i==0) {
+				newKey+=strs[i];
+			}else {
+				String temp = strs[i].substring(1, strs[i].length());
+				newKey+=(char)(strs[i].charAt(0)-32)+temp;
+			}
+		}
+		return newKey;
+	}
 }

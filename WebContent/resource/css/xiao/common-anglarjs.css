@@ -69,3 +69,28 @@ td>select,td>.import_statu,.input-center{
 }
 
 
+.cut-off-line{
+	margin-top: 40px ;
+	background-color: #999999;
+	height: 2px;
+}
+
+.export-bar td{
+	width:24%;
+}
+
+.field-input{
+	width:20px;
+}
+
+.field-tr>td{
+	border:solid 1px #999999;
+}
+
+.set-off-td{
+	border:solid 1px red;
+}
+
+
+
+

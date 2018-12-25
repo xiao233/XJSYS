@@ -8,6 +8,9 @@
         <!-- 积极加载设置为false -->
         <setting name="aggressiveLazyLoading" value="false"/>
         <setting name="lazyLoadTriggerMethods" value=""/>
+        
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
 
 </configuration>

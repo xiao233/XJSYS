@@ -2,7 +2,7 @@ package com.java.dao;
 
 import java.util.List;
 
-import com.java.entites.TableInf;
+import com.java.entites.TblTableInf;
 
 public interface TableInfDao {
 	/**
@@ -10,5 +10,5 @@ public interface TableInfDao {
 	 * 2018-12-13 17:38:07
 	 * @return
 	 */
-	public List<TableInf> queryAll();
+	public List<TblTableInf> queryAll();
 }

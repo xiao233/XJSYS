@@ -4,11 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.java.dao.TableInfDao">
     <!--地址数据库字段和实体类对的映射关系-->
-    <resultMap id="tableInfMap" type="TableInf">
+    <resultMap id="tableInfMap" type="TblTableInf">
     	<id column="TABLE_ID" property="tableId"/>
     	<result column="TABLE_NAME" property="tableName"/>
     	<result column="TABLE_NAME_CN" property="tableNameCn"/>
     	<result column="TABLE_DESCRIPTION" property="tableDescription"/>
+    	<result column="TABLE_CRT_TS" property="tableCrtTs"/>
+    	<result column="TABLE_CRT_USR" property="tableCrtUsr"/>
     </resultMap>
     
     <select id="queryAll" resultMap="tableInfMap">
