@@ -2,9 +2,9 @@ package com.java.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.entites.SearchParamObject;
 import com.java.entites.TblFieldInf;
 
 /**
@@ -27,5 +27,5 @@ public interface FieldInfService {
 	 * @param response
 	 * @param searchParamObject
 	 */
-	void exportTableInf(HttpServletResponse response, SearchParamObject searchParamObject);
+	void exportTableInf(HttpServletResponse response, HttpServletRequest request);
 }

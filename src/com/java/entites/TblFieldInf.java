@@ -1,7 +1,14 @@
 package com.java.entites;
 
-public class TblFieldInf {
+import java.io.Serializable;
+
+public class TblFieldInf implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String tableName;
 	
 	private Integer tableId;

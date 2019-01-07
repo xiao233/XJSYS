@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -13,11 +14,9 @@ import org.springframework.stereotype.Service;
 
 import com.java.dao.FieldInfDao;
 import com.java.dao.jdbc.CommonSQLOperationUtils;
-import com.java.entites.SearchParamObject;
 import com.java.entites.TblFieldInf;
 import com.java.service.FieldInfService;
 import com.java.utils.StringUtils;
-import com.java.utils.TableToEntityClassUtils;
 import com.java.utils.WriteInFileUtils;
 
 @Service
@@ -45,22 +44,20 @@ public class FieldInfServiceImpl implements FieldInfService {
 	}
 	
 	@Override
-	public void exportTableInf(HttpServletResponse response, SearchParamObject searchParamObject) {
+	public void exportTableInf(HttpServletResponse response, HttpServletRequest request) {
 		
-		Map<String,String> searchObj = searchParamObject.getSearchObj();
-		String tableName = searchObj.get("exportTableName");
-		String fileName = searchObj.get("exportFileName");
-		String fileType = searchObj.get("exportFileType");
-		String fields = searchObj.get("selectFields");
+		String tableName = request.getParameter("exportTableName");
+		String fileName = request.getParameter("exportFileName");
+		String fileType = request.getParameter("exportFileType");
+		String fields = request.getParameter("selectFields");
 		
 		Map<String,Object> params = new HashMap<String,Object>();
 		List<String> queryFields = parseFields(fields);
 		
-		List<?> queryResult = CommonSQLOperationUtils.query(tableName, queryFields, params,
-				TableToEntityClassUtils.getClass(tableName));
+		List<Map<String,Object>> queryResult = CommonSQLOperationUtils.queryMap(tableName, queryFields, params);
 		
 		log.info("查询到表'"+tableName+"'"+queryResult.size()+"条数据！");
-		WriteInFileUtils.writeInFile(queryResult,fileName+fileType,response);
+		WriteInFileUtils.writeInFile(queryResult,fileName+fileType,response,tableName);
 	}
 	
 

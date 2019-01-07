@@ -1,8 +1,14 @@
 package com.java.entites;
 
+import java.io.Serializable;
+
 import com.java.constants.CommonConstants;
 
-public class UserInf {
+public class UserInf implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userSeq;
 	private String userName;
 	private String userPaw;
@@ -12,6 +18,7 @@ public class UserInf {
 	private String confirmFlag;
 	private String codeImage;
 	private String isLogin;
+	private String codeKey;
 	
 	
 	
@@ -71,6 +78,12 @@ public class UserInf {
 	}
 	public void setConfirmFlag(String confirmFlag) {
 		this.confirmFlag = confirmFlag;
+	}
+	public String getCodeKey() {
+		return codeKey;
+	}
+	public void setCodeKey(String codeKey) {
+		this.codeKey = codeKey;
 	}
 	
 	

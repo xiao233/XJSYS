@@ -13,6 +13,7 @@ import com.java.entites.CodeMessageResult;
 import com.java.entites.UserInf;
 import com.java.service.UserInfService;
 import com.java.utils.GetUUID;
+import com.java.utils.RedisUtils;
 import com.java.utils.StringUtils;
 
 @Service
@@ -42,6 +43,8 @@ public class UserInfServiceImpl implements UserInfService {
 				fillDefaultValues(userInf);
 				userInfDao.register(userInf);
 				msg=CodeMsgConstants.R_REGISTER_SUCC_MSG;
+			}else {
+				return cms;
 			}
 		}catch(Exception e) {
 			log.error(e.getMessage());
@@ -49,10 +52,10 @@ public class UserInfServiceImpl implements UserInfService {
 			msg+=CodeMsgConstants.OPERATION_FAIL_MSG;
 		}
 		
-		if(code!="") {
+		if(!StringUtils.isEmpty(code)) {
 			cms.setCode(code);
 		}
-		if(msg!="") {
+		if(!StringUtils.isEmpty(msg)) {
 			cms.setMsg(msg);
 		}
 		
@@ -61,25 +64,52 @@ public class UserInfServiceImpl implements UserInfService {
 
 	private CodeMessageResult<UserInf> checkUserInf(UserInf userInf) {
 		CodeMessageResult<UserInf> cms = new CodeMessageResult<UserInf>();
-		String code ="";
-		String msg = "";
+		String code = null;
+		String msg = null;
 		
 		if(StringUtils.isEmpty(userInf.getUserName())) {
 			code=CodeMsgConstants.L_R_NAME_IS_EMPTY;
 			msg=CodeMsgConstants.L_R_NAME_IS_EMPTY_MSG;
+			cms.setCode(code);
+			cms.setMsg(msg);
+			return cms;
 		}
 		
 		if(StringUtils.isEmpty(userInf.getUserPaw())) {
 			code=CodeMsgConstants.L_R_PWD_ISEMPTY;
 			msg = CodeMsgConstants.L_R_PWD_ISEMPTY_MSG;
-		}
-		
-		if(StringUtils.isEmpty(userInf.getCodeImage())) {
-			code=CodeMsgConstants.CODE_IS_EMPTY;
-			msg=CodeMsgConstants.CODE_IS_EMPTY_MSG;
+			cms.setCode(code);
+			cms.setMsg(msg);
+			return cms;
 		}
 		
 		//验证图片验证码
+		String enterCodeImage = userInf.getCodeImage();
+		String codeKey = userInf.getCodeKey();
+		if(StringUtils.isEmpty(enterCodeImage)) {//输入的图片验证码为空
+			code=CodeMsgConstants.CODE_IS_EMPTY;
+			msg=CodeMsgConstants.CODE_IS_EMPTY_MSG;
+		}else if(StringUtils.isEmpty(codeKey)){//保存图片验证码的key为空
+			code=CodeMsgConstants.CODE_REDIS_ERROR;
+			msg=CodeMsgConstants.CODE_REDIS_ERROR_MSG;
+		}else {
+			String codeImage = RedisUtils.getString(codeKey);
+			if(StringUtils.isEmpty(codeImage)) {//从redis获取图片验证码为空
+				code=CodeMsgConstants.CODE_REDIS_ERROR;
+				msg=CodeMsgConstants.CODE_REDIS_ERROR_MSG;
+			}else if(!codeImage.toLowerCase().equals(enterCodeImage.toLowerCase())){//输入验证码不对
+				code=CodeMsgConstants.CODE_IS_ERROR;
+				msg=CodeMsgConstants.CODE_IS_ERROR_MSG;
+			}
+		}
+		
+		if(code!=null) {
+			cms.setCode(code);
+			cms.setMsg(msg);
+			return cms;
+		}
+		//到这图片验证码输入正确
+		
 		
 		if(userInf.getIsLogin().equals(CommonConstants.IS_LOGIN)) {
 			code=CodeMsgConstants.L_LOGIN_SUCC;
@@ -94,9 +124,7 @@ public class UserInfServiceImpl implements UserInfService {
 		cms.setCode(code);
 		cms.setMsg(msg);
 		
-		if(msg!="") {
-			log.info(code+": "+msg);
-		}
+		
 		return cms;
 	}
 

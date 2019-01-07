@@ -53,6 +53,8 @@
 			$("input[type='hidden']").val("register");
 		}
 		var json = getJsonByFormId("log-res-form");
+		var codeKey = window.sessionStorage.getItem("code-image-key");
+		json["codeKey"]=codeKey;
 		$.ajax({
 			type:"POST",
 			url:"${pageContext.request.contextPath }/log.reg",
@@ -62,9 +64,15 @@
 			success:function(res){
 				if(res.code=="L0000"){
 					window.location.href="${pageContext.request.contextPath}/first"
+				}else if(res.code=="R0000"){
+					$(".msg-content").removeClass("content-dn");
+					$("#warning-msg").text(res.msg);
 				}else{
 					$(".msg-content").removeClass("content-dn");
 					$("#warning-msg").text(res.msg);
+					$("#bornCodeImage").prop("src",res.codeImage);
+					//存储信息
+					window.sessionStorage.setItem("code-image-key",res.key);
 				}
 			},
 			error:function(res){
@@ -82,6 +90,8 @@
 			success:function(res){
 				if(res.code=="0004"){
 					$("#bornCodeImage").prop("src",res.codeImage);
+					//存储信息
+					window.sessionStorage.setItem("code-image-key",res.key);
 				}
 			},
 			error:function(res){

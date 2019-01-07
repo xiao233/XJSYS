@@ -69,68 +69,10 @@ app.controller("exImportCtrl",["$scope","$http",function($scope,$http){
 	}
 	
 	
-	//导出文件
-	$scope.exportFile = function(){
-		var searchObj = getSearchObj();
-		
-		/*if(!searchObj){
-			return;
-		}*/
-		$http
-		.post("/XJSYS/table/export",{"searchObj":searchObj})
-		.then(function(res){
-			
-		})
-	}
-	
-	function getSearchObj(){
-		var searchObj = {};
-		
-		//表名
-		if($scope.exportTableName!=""&&$scope.exportTableName!=null){
-			searchObj.exportTableName=$scope.exportTableName;
-		}else{
-			alert("请选择要导出的表名！");
-			return;
-		}
-		
-		//文件名
-		if($scope.exportFileName!=""&&$scope.exportFileName!=null){
-			searchObj.exportFileName=$scope.exportFileName;
-		}else{
-			alert("请选择要导出的文件名！");
-			return;
-		}
-		
-		//文件类型
-		if($scope.exportFileType!=""&&$scope.exportFileType!=null){
-			searchObj.exportFileType=$scope.exportFileType;
-		}else{
-			alert("请选择要导出的文件类型！");
-			return;
-		}
-		
-		/**
-		 * 复选框取选中的值
-		 */
-		var selectFields = "";
-		 $("input[name='fieldName']:checked").each(function(){
-			 console.log($(this).val());
-			 selectFields+=$(this).val()+",";
-		 });
-		 if(selectFields==""){
-			 alert("请至少勾选一个字段！");
-			return;
-		 }
-		 searchObj.selectFields=selectFields;
-		 
-		return searchObj;
-	}
-	
-	//通过选择的表名和当前时间生成导出的文件名
+	//通过选择的表名和当前时间戳生成导出的文件名
 	function getFileName(){
 		var date = new Date();
-		var fileName = $scope.exportTableName+"_"+date.getFullYear()+date.getMonth()+date.getDate();
+		var fileName = $scope.exportTableName+"_"+date.getTime();
 		$scope.exportFileName = fileName;
 	}
 	
@@ -148,4 +90,3 @@ app.controller("exImportCtrl",["$scope","$http",function($scope,$http){
 		}
 	});
 }]);
-

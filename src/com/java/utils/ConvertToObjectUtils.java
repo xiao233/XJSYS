@@ -26,15 +26,15 @@ public class ConvertToObjectUtils {
 	 * @param tableClass 对象类名
 	 * @return
 	 */
-	public static <T> List<T> mapToObject(List<Map<String, Object>> queryList, Class<T> tableClass) {
-		List<T> result = new ArrayList<T>();
+	public static  List<Object> mapToObject(List<Map<String, Object>> queryList, Class<?> tableClass) {
+		List<Object> result = new ArrayList<Object>();
 		
 		Field []fields = tableClass.getDeclaredFields();
 		
 		
 		for (Map<String, Object> map : queryList) {
 			try {
-				T temp = tableClass.newInstance();
+				Object temp = tableClass.newInstance();
 				Set<Entry<String, Object>> entrys = map.entrySet();
 				for (Entry<String, Object> entry : entrys) {
 					String fieldName = StringUtils.changeName(entry.getKey());

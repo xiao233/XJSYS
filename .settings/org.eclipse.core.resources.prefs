@@ -11,4 +11,6 @@ encoding//src/com/java/service/UserInfService.java=UTF-8
 encoding//src/com/java/service/impl/UserInfServiceImpl.java=UTF-8
 encoding//src/com/java/utils/LoadProperties.java=UTF-8
 encoding//src/com/java/utils/PropertiesUtils.java=UTF-8
+encoding//src/resource/config.properties=UTF-8
+encoding//src/resource/redis.properties=UTF-8
 encoding//src/resource/xssblack.txt=UTF-8

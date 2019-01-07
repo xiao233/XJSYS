@@ -21,7 +21,7 @@ import com.java.utils.ConvertToObjectUtils;
  * @author xjl
  * 2018-12-25 09:15:22
  */
-public class CommonSQLOperationUtils<T> {
+public class CommonSQLOperationUtils {
 	
 	private static Logger log = Logger.getLogger(CommonSQLOperationUtils.class);
 	
@@ -34,8 +34,27 @@ public class CommonSQLOperationUtils<T> {
 	 * @param tableClass 对应实体的类
 	 * @return
 	 */
-	public static <T> List<T> query(String tableName,List<String> queryFields,
-			Map<String,Object> params,Class<T> tableClass){
+	public static  List<Object> query(String tableName,List<String> queryFields,
+			Map<String,Object> params,Class<?> tableClass){
+		List<Map<String,Object>> queryList = queryMap(tableName, queryFields, params);
+		List<Object> result = null;
+		//将查询结果转换成相应实体类
+		result = ConvertToObjectUtils.mapToObject(queryList,tableClass);
+		
+		return result;
+	}
+
+	/**
+	 * 通用查询，返回map集合
+	 * 2018-12-29 11:26:45
+	 * @param tableName 表名
+	 * @param queryFields 查询字段
+	 * @param params 查询参数
+	 * @return
+	 */
+	public static List<Map<String,Object>> queryMap(String tableName,List<String> queryFields,
+			Map<String,Object> params){
+		List<Map<String,Object>> queryList = new ArrayList<Map<String,Object>>();
 		Connection con = ConnectionManager.getConnection();
 		
 		StringBuilder sql = new StringBuilder("");
@@ -65,7 +84,6 @@ public class CommonSQLOperationUtils<T> {
 		
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<T> result = null;
 		try {
 			pst = con.prepareStatement(sql.toString());
 			
@@ -76,7 +94,6 @@ public class CommonSQLOperationUtils<T> {
 			
 			//执行
 			rs = pst.executeQuery();
-			List<Map<String,Object>> queryList = new ArrayList<Map<String,Object>>();
 			
 			//遍历查询结果
 			while(rs.next()) {
@@ -87,17 +104,11 @@ public class CommonSQLOperationUtils<T> {
 				queryList.add(obj);
 			}
 			
-			//将查询结果转换成相应实体类
-			result = ConvertToObjectUtils.mapToObject(queryList,tableClass);
-			
 		} catch (SQLException e) {
 			log.error("查询异常: "+e.getMessage());
 		} finally {
 			ConnectionManager.closeConnection(con, pst, rs);
 		}
-		
-		return result;
+		return queryList;
 	}
-
-	
 }

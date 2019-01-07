@@ -1,6 +1,13 @@
 package com.java.entites;
 
-public class TblTableInf {
+import java.io.Serializable;
+
+public class TblTableInf implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Integer tableId;
 	
 	private String tableName;

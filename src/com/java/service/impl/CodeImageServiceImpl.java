@@ -13,7 +13,10 @@ import javax.imageio.ImageIO;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Base64Utils;
 
+import com.java.constants.ConfigConstants;
+import com.java.entites.UserInf;
 import com.java.service.CodeImageService;
+import com.java.utils.RedisUtils;
 import com.java.utils.StringUtils;
 
 @Controller
@@ -25,6 +28,7 @@ public class CodeImageServiceImpl implements CodeImageService {
 	@Override
 	public String getCodeImage(String key) throws IOException {
 		String code = StringUtils.getRandom(4);
+		RedisUtils.setString(key, code,ConfigConstants.CODE_IMAGE_LIVE_TIME);
 		Random random = new Random();
 		int width = 60;
 		int height = 40;
@@ -53,6 +57,12 @@ public class CodeImageServiceImpl implements CodeImageService {
 		String base64 = Base64Utils.encodeToString(out.toByteArray());
 		out.close();
 		return base64;
+	}
+	
+	@Override
+	public int checkCodeImage(UserInf user, String code,String codeKey) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	private Color getReserveColor(Color color) {

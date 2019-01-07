@@ -90,9 +90,8 @@ public class TableInfController extends BaseController{
 	 */
 	@RequestMapping(value="/export",method=RequestMethod.POST)
 	public void exportTableInf(HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestBody SearchParamObject searchParamObject) {
+			HttpServletResponse response) {
 		log.info("》》》》》》开始导出表数据");
-		fieldInfService.exportTableInf(response,searchParamObject);
+		fieldInfService.exportTableInf(response,request);
 	}
 }

@@ -37,62 +37,126 @@
 	<div class="cut-off-line"></div>
 	
 	<div  class="export-bar">
-		<table border="solid">
-			<caption class="info-center">说明：导出的文件时表、文件名、文件类型必须都有值，否则不能导出操作</caption>
-			<tr>
-				<td class="td-backcolor">要导出到的表：</td>
-				<td>
-					<select ng-model="exportTableName" id="exportTableName" ng-change="searchFieldInf()">
-						<option value="">-请选择-</option>
-						<option value="{{tableInf.tableName}}" ng-repeat="tableInf in tableInfs">{{tableInf.tableNameCn}}</option>
-					</select>
-				</td>
+		<form action="/XJSYS/table/export" method="post" onsubmit="return exportFile()">
+			<table border="solid">
+				<caption class="info-center">说明：导出的文件时表、文件名、文件类型必须都有值，否则不能导出操作</caption>
+				<tr>
+					<td class="td-backcolor">要导出到的表：</td>
+					<td>
+						<select ng-model="exportTableName" id="exportTableName" name="exportTableName" ng-change="searchFieldInf()">
+							<option value="">-请选择-</option>
+							<option value="{{tableInf.tableName}}" ng-repeat="tableInf in tableInfs">{{tableInf.tableNameCn}}</option>
+						</select>
+					</td>
+					
+					<td class="td-backcolor">表：</td>
+					<td colspan="1">
+						{{exportTableName}}
+					</td>
+					
+					<td class="td-backcolor-ora" rowspan="100" >
+						<input type="submit" value="导出文件"  class="td-backcolor-ora" style="font-weight: bold;"/>
+					</td>
+				</tr>
 				
-				<td class="td-backcolor">文件名：</td>
-				<td colspan="1">
-					<input type="text" ng-model="exportFileName" id="exportFileName" readonly="readonly"/>
-				</td>
+				<tr ng-if="exportTableName!=''">
+					<td>全选&nbsp;<input  type="checkbox" id="select_all" checked onchange="selectAll()" class="field-input" /></td>
+					<td colspan="3" style="font-weight: bolder;">请选择要导出到文件的字段信息</td>
+				</tr>
+				<tr ng-if="exportTableName!=''"><td colspan="4" class="set-off-td"></td></tr>
+				<tr  ng-repeat="tableFieldInf in tableFieldInfs" ng-if="tableFieldInf.isShow=='1'" class="field-tr">
+					<td colspan="1">
+						<input  type="checkbox" name="fieldName"  class="field-input" checked value="{{tableFieldInf.fieldName}}"/>
+					</td>
+					<td colspan="1">
+						{{tableFieldInf.fieldName}}
+					</td>
+					<td colspan="2">
+						{{tableFieldInf.fieldNameCn}}
+					</td>
+				</tr>
+				<tr ng-if="exportTableName!=''">
+					<td colspan="4" class="set-off-td">	
+						<input name="selectFields" id="selectFields" hidden="hidden"/>
+					</td>
+				</tr>
 				
-				<td class="td-backcolor-ora" rowspan="100">
-					<input type="submit" value="导出文件" ng-click="exportFile()" class="td-backcolor-ora"/>
-				</td>
-			</tr>
-			
-			<tr ng-if="exportTableName!=''">
-				<td>全选&nbsp;<input  type="checkbox" checked class="field-input" /></td>
-				<td colspan="3" style="font-weight: bolder;">请选择要导出到文件的字段信息</td>
-			</tr>
-			<tr ng-if="exportTableName!=''"><td colspan="4" class="set-off-td"></td></tr>
-			<tr  ng-repeat="tableFieldInf in tableFieldInfs" ng-if="tableFieldInf.isShow=='1'" class="field-tr">
-				<td colspan="1">
-					<input  type="checkbox" name="fieldName"  class="field-input" checked value="{{tableFieldInf.fieldName}}"/>
-				</td>
-				<td colspan="1">
-					{{tableFieldInf.fieldName}}
-				</td>
-				<td colspan="2">
-					{{tableFieldInf.fieldNameCn}}
-				</td>
-			</tr>
-			<tr ng-if="exportTableName!=''"><td colspan="4" class="set-off-td"></td></tr>
-			
-			<tr>
-				<td class="td-backcolor">文件类型：</td>
-				<td class="td-file">
-					<select ng-model="exportFileType">
-						<option value="">-请选择-</option>
-						<option value="{{fileType.cfgValue}}" ng-repeat="fileType in fileTypes">{{fileType.cfgValue}}</option>
-					</select>
-				</td>
-				
-				<td class="td-backcolor">
-					导出进度
-				</td>
-				<td colspan="1">
-				</td>
-			</tr>
-		</table>
-		
-		<p>{{exportTableName}}</p>
+				<tr>
+					<td class="td-backcolor">文件名：</td>
+					<td colspan="1">
+						<input type="text" ng-model="exportFileName" id="exportFileName" name="exportFileName" readonly="readonly"/>
+					</td>
+					<td class="td-backcolor">文件类型：</td>
+					<td class="td-file">
+						<select ng-model="exportFileType" id="exportFileType" name="exportFileType">
+							<option value="">-请选择-</option>
+							<option value="{{fileType.cfgValue}}" ng-repeat="fileType in fileTypes">{{fileType.cfgValue}}</option>
+						</select>
+					</td>
+					
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
+<script>
+	function exportFile(){
+		var searchObj = getSearchObj();
+		
+		if(!searchObj){
+			return false;
+		}
+		return true;
+	}
+	
+	function getSearchObj(){
+		var searchObj = {};
+		
+		//表名
+		var exportTableName = $("#exportTableName").val();
+		if(exportTableName==""||exportTableName==null){
+			alert("请选择要导出的表名！");
+			return false;
+		}
+		
+		
+		/**
+		 * 复选框取选中的值
+		 */
+		var selectFields = "";
+		 $("input[name='fieldName']:checked").each(function(){
+			 selectFields+=$(this).val()+",";
+		 });
+		 if(selectFields==""||selectFields==null){
+			 alert("请至少勾选一个字段！");
+			return false;
+		 }
+		 
+		 
+		 $("#selectFields").val(selectFields);
+		 
+		//文件名
+			var exportFileName = $("#exportFileName").val();
+			if(exportFileName==""||exportFileName==null){
+				alert("请选择要导出的文件名！");
+				return false;
+			}
+			
+		//文件类型
+		var exportFileType = $("#exportFileType").val();
+		if(exportFileType==""||exportFileType==null){
+			alert("请选择要导出的文件类型！");
+			return false;
+		}
+		return true;
+	}
+	
+	//全选按钮
+	function selectAll(){
+		if($("#select_all").prop("checked")){
+			$("input[name='fieldName']").prop("checked",true);
+		}else{
+			$("input[name='fieldName']").prop("checked",false);
+		}
+	}
+</script>

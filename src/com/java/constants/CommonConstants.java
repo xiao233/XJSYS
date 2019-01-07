@@ -8,5 +8,8 @@ public class CommonConstants {
 	public static final String APP_XSS_BLACK_NAME="xssblack.txt";
 	
 	public static final String IS_LOGIN = "login";
+
+	//Redisª∫¥Ê≈‰÷√–≈œ¢
+	public static final String REDIS_CONFIG = "redis.properties";
 	
 }
