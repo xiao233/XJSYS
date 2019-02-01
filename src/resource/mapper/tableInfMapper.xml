@@ -13,7 +13,133 @@
     	<result column="TABLE_CRT_USR" property="tableCrtUsr"/>
     </resultMap>
     
-    <select id="queryAll" resultMap="tableInfMap">
+    <!-- 查询所有 -->
+    <select id="queryAll" resultMap="tableInfMap" parameterType="TblTableInf">
     	select * from TBL_TABLE_INF
+    	<where>
+    		<if test="tableId!='' and tableId!=null ">
+    			and TABLE_ID=#{tableId}
+    		</if>
+    		<if test="tableName!='' and tableName!=null ">
+    			and TABLE_NAME=#{tableName}
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			and TABLE_CRT_USR=#{tableCrtUsr}
+    		</if>
+    	</where>
     </select>
+    
+    <!-- 分页查询 -->
+    <select id="queryPageAll" resultMap="tableInfMap" parameterType="TblTableInf">
+    	select * from TBL_TABLE_INF
+    	<where>
+    		<if test="tableId!='' and tableId!=null ">
+    			and TABLE_ID=#{tableId}
+    		</if>
+    		<if test="tableName!='' and tableName!=null ">
+    			and TABLE_NAME=#{tableName}
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			and TABLE_CRT_USR=#{tableCrtUsr}
+    		</if>
+    	</where>
+    	limit #{dataStart},#{pageSize}
+    </select>
+    
+    <!-- 查询数量 -->
+    <select id="queryCount" resultType="Integer" parameterType="TblTableInf">
+    	select count(*) from TBL_TABLE_INF
+    	<where>
+    		<if test="tableId!='' and tableId!=null ">
+    			and TABLE_ID=#{tableId}
+    		</if>
+    		<if test="tableName!='' and tableName!=null ">
+    			and TABLE_NAME=#{tableName}
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			and TABLE_CRT_USR=#{tableCrtUsr}
+    		</if>
+    	</where>
+    </select>
+    
+    <!-- 根据id更新 -->
+    <update id="updateTableInfById"  parameterType="TblTableInf" >
+    	update TBL_TABLE_INF
+    	<set>
+    		<if test="tableName!='' and tableName!=null ">
+    			 TABLE_NAME=#{tableName},
+    		</if>
+    		<if test="tableNameCn!='' and tableNameCn!=null ">
+    			 TABLE_NAME_CN=#{tableNameCn},
+    		</if>
+    		<if test="tableDescription!='' and tableDescription!=null ">
+    			 TABLE_DESCRIPTION=#{tableDescription},
+    		</if>
+    		<if test="tableCrtTs!='' and tableCrtTs!=null ">
+    			 TABLE_CRT_TS=#{tableCrtTs},
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			 TABLE_CRT_USR=#{tableCrtUsr}
+    		</if>
+    	</set>
+    	where TABLE_ID=#{tableId}
+    </update>
+    
+    <!-- 删除 -->
+    <delete id="deleteTableInf" parameterType="TblTableInf" >
+    	delete from TBL_TABLE_INF
+    	<where>
+    		<if test="tableId!='' and tableId!=null ">
+    			and TABLE_ID=#{tableId}
+    		</if>
+    		<if test="tableName!='' and tableName!=null ">
+    			and TABLE_NAME=#{tableName}
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			and TABLE_CRT_USR=#{tableCrtUsr}
+    		</if>
+    	</where>
+    </delete>
+    
+    <!-- 添加 -->
+    <insert id="createTableInf" parameterType="TblTableInf" 
+    useGeneratedKeys="true" keyProperty="tableId"><!-- 这两属性决定主键自动注入 -->
+    	insert into TBL_TABLE_INF
+    	<trim prefix="(" suffix=")" suffixOverrides=",">
+    		<if test="tableName!='' and tableName!=null ">
+    			 TABLE_NAME,
+    		</if>
+    		<if test="tableNameCn!='' and tableNameCn!=null ">
+    			 TABLE_NAME_CN,
+    		</if>
+    		<if test="tableDescription!='' and tableDescription!=null ">
+    			 TABLE_DESCRIPTION,
+    		</if>
+    		<if test="tableCrtTs!='' and tableCrtTs!=null ">
+    			 TABLE_CRT_TS,
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			 TABLE_CRT_USR
+    		</if>
+    	</trim>
+    	
+    	values
+    	<trim prefix="(" suffix=")" suffixOverrides=",">
+    		<if test="tableName!='' and tableName!=null ">
+    			 #{tableName},
+    		</if>
+    		<if test="tableNameCn!='' and tableNameCn!=null ">
+    			 #{tableNameCn},
+    		</if>
+    		<if test="tableDescription!='' and tableDescription!=null ">
+    			 #{tableDescription},
+    		</if>
+    		<if test="tableCrtTs!='' and tableCrtTs!=null ">
+    			 #{tableCrtTs},
+    		</if>
+    		<if test="tableCrtUsr!='' and tableCrtUsr!=null ">
+    			 #{tableCrtUsr}
+    		</if>
+    	</trim>
+    </insert>
 </mapper>

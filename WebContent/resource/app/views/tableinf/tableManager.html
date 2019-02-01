@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+<div  ng-init="init()">
+	<div class=" content-header font-style1" >
+		<span class="margin-left-style1">XR平台 / 管理服务 / 表信息管理/</span>
+	</div>
+	
+	<div class="container xj-query-bar">
+	    <div class="row" >
+	    	<div class="col-md-4 col-md-offset-1 xj-font-style">
+	            <span class="xj-letter-space">表名:</span>
+	            <select ng-model="tableName">
+	            	<option value="">-----请选择-----</option>
+	            	<option value="{{tableInf.tableName}}" ng-repeat="tableInf in tableInfsDrop">{{tableInf.tableNameCn}}</option>
+	            </select>
+	        </div>
+	        <div class="col-md-2 col-md-offset-1">
+	            <input type="button" ng-click="searchInf()" value="查 询" class="xj-btn-style xj-font-style">
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="cut-off-line"></div>
+	
+	<div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="success">
+					<th style="display: none;"></th>
+					<th class="text-center">表名</th>
+					<th class="text-center">表中文名</th>
+					<th class="text-center">表描述</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tableInf in tableInfs">
+					<td style="display: none;">{{tableInf.tableId}}</td>
+					<td>{{tableInf.tableName}}</td>
+					<td>{{tableInf.tableNameCn}}</td>
+					<td>{{tableInf.tableDescription}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="cut-off-line"></div>
+	<div ng-include="'views/common/operate.html'"></div>
+	<div ng-include="'views/common/page.html'"></div>
+
+</div>

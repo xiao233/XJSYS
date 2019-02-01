@@ -1,7 +1,7 @@
 package com.java.service;
 
-import com.java.entites.CodeMessageResult;
 import com.java.entites.UserInf;
+import com.java.entites.common.CodeMessageResult;
 
 public interface UserInfService {
 	

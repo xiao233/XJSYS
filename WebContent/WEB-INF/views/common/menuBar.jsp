@@ -35,6 +35,18 @@
 		</li>
 	</ul>
 	<ul>
+		<li class="menu-lever-one">系统管理</li>
+		<li class="no-show-style lever-one">
+			<ul>
+				<li class="menu-lever-two">
+					表信息管理
+					<span class="no-show-style">tableManager</span>
+				</li>
+				<li class="menu-lever-two">地址信息管理</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
 		<li class="menu-lever-one">帮助</li>
 		<li class="no-show-style lever-one">
 			<ul>

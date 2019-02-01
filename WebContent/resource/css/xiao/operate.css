@@ -1,0 +1,35 @@
+#operate-container li{
+	list-style: none;
+	float:left;
+	margin-left: 20px;
+	
+}
+
+#operate-container button,#xj-btn-upd{
+	border:solid 1px ;
+	height:30px;
+	min-width:80px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 130%
+}
+
+.oper-c{
+	background-color: #00ff00;
+}
+
+.oper-r{
+	background-color: #ffffff;
+}
+
+.oper-u{
+	background-color: #00ffff;
+}
+
+.oper-d{
+	background-color: #ff8000;
+}
+
+.oper-back{
+	background-color: #ff0000;
+}

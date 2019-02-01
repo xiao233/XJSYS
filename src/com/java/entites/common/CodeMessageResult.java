@@ -1,4 +1,4 @@
-package com.java.entites;
+package com.java.entites.common;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,8 @@ public class CodeMessageResult<T> {
 	 * ½á¹û¼¯
 	 */
 	private List<T> result = new ArrayList<T>();
+	
+	private Page page = new Page();
 	public String getCode() {
 		return code;
 	}
@@ -38,6 +40,12 @@ public class CodeMessageResult<T> {
 	}
 	public void setResult(List<T> result) {
 		this.result = result;
+	}
+	public Page getPage() {
+		return page;
+	}
+	public void setPage(Page page) {
+		this.page = page;
 	}
 	
 	

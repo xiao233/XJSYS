@@ -89,5 +89,32 @@ public class CodeMsgConstants {
 	public static final String QUERY__FAILD= "Q0002";
 	public static final String QUERY__FAILD_MSG = "查询失败!";
 	
+	/**
+	 * 更新成功
+	 */
+	public static final String UPDATE_SUCCESS = "U0000";
+	/**
+	 * 更新失败
+	 */
+	public static final String UPDATE_FAILD = "U0001";
+	
+	/**
+	 * 删除成功
+	 */
+	public static final String DELETE_SUCCESS = "D0000";
+	/**
+	 * 删除失败
+	 */
+	public static final String DELETE_FAILD = "D0001";
+	
+	/**
+	 * 添加成功
+	 */
+	public static final String CREATE_SUCCESS = "C0000";
+	/**
+	 * 添加失败
+	 */
+	public static final String CREATE_FAILD = "C0001";
+	
 	
 }

@@ -20,6 +20,7 @@ app.config(["$stateProvider","$ocLazyLoadProvider","$urlRouterProvider",
 			 templateUrl:'error.html'
 		});
 		
+		
 		//导入导出
 		sp.state("exImport",{
 			 url:'/exImport',
@@ -36,7 +37,7 @@ app.config(["$stateProvider","$ocLazyLoadProvider","$urlRouterProvider",
 		
 		//二维码
 		sp.state("enDecode",{
-			 url:'/enDecode',
+			url:'/enDecode',
             templateUrl:'views/en_decode/enDecode.html',
             controller:'enDecodeCtrl',
             resolve:{
@@ -47,10 +48,37 @@ app.config(["$stateProvider","$ocLazyLoadProvider","$urlRouterProvider",
            	 }]
             }
 		});
+		
+		//表信息管理
+		sp.state("tableManager",{
+			url:'/tableManager',
+			templateUrl:'views/tableinf/tableManager.html',
+			controller:'tableManagerCtrl',
+			resolve:{
+				loadMyCtrl:["$ocLazyLoad",function($ocLazyLoad){
+					return $ocLazyLoad.load({
+						name:'app.tableManagerCtrl',
+						files:['scripts/tableinf/tableManager.js']
+					})
+				}]
+			}
+		});
+		
+		//更新、查看表信息
+		sp.state("tableDetailUpdate",{
+			url:'/tableDetailUpdate?tableId&type',
+			templateUrl:'views/tableinf/tableDetailUpdate.html',
+			controller:'tableDetailUpdateCtrl',
+			resolve:{
+				loadMyCtrl:["$ocLazyLoad",function($ocLazyLoad){
+					return $ocLazyLoad.load({
+						name:'app.tableDetailUpdateCtrl',
+						files:['scripts/tableinf/tableDetailUpdate.js']
+					})
+				}]
+			}
+		});
 }]);
 
 
 
-app.controller("mainCtrl",["$scope",function($scope){
-	$scope.data="oooo";
-}]);

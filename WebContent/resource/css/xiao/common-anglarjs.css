@@ -43,7 +43,7 @@
 	border-bottom: solid 2px #999999;
 }
 
-td{
+td,th{
 	text-align: center;
 }
 
@@ -90,6 +90,27 @@ td>select,td>.import_statu,.input-center{
 
 .set-off-td{
 	border:solid 1px red;
+}
+
+.query-td{
+	width:20%;
+}
+
+.query-td>select{
+	border:1px;
+}
+
+.content-right{
+	text-align: right;
+}
+
+.btn-back,.btn-operate{
+	border:solid 1px ;
+	height:40px;
+	min-width:80px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 130%
 }
 
 

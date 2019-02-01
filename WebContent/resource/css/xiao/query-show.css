@@ -1,0 +1,35 @@
+.xj-query-bar{
+	margin-top: 40px;
+}
+
+.xj-query-bar select{
+	width:180px;
+	height:40px;
+}
+
+.xj-btn-style{
+	height:40px;
+	width: 80px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.xj-font-style{
+	font-size: 120%;
+}
+
+.xj-letter-space{
+	letter-spacing: 4px;
+}
+
+.xj-content-color{
+	background-color: #dff0d8;
+}
+
+.xj-query-bar>div{
+	margin-top: 10px;
+}
+
+.xj-query-bar input{
+	width:100%;
+}

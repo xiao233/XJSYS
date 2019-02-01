@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.java.entites.SearchParamObject;
 import com.java.entites.ViewDropCfg;
+import com.java.entites.common.SearchParamObject;
 import com.java.utils.DropdownUtils;
 
 @RequestMapping("dropdown")

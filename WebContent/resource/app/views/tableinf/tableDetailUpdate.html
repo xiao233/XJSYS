@@ -1,0 +1,97 @@
+<meta charset="UTF-8">
+<div ng-init="init()">
+	<div class=" content-header font-style1" >
+		<span class="margin-left-style1">XR平台 / 管理服务 / 表信息管理/</span>
+	</div>
+	
+	<div class="container xj-query-bar" id="tableBase">
+		<p>表基本信息</p>
+		<div class="row" >
+	    	<div class="col-md-2 col-md-offset-1 content-right">
+	            <span class="xj-letter-space">表id: </span>
+	        </div>
+	        <div class="col-md-3  ">
+	           	<input disabled="disabled" value="{{tableInf.tableId}}"/>
+	        </div>
+	        
+	        <div class="col-md-2 content-right ">
+	            <span class="xj-letter-space">表名: </span>
+	        </div>
+	        <div class="col-md-3  ">
+	            <input ng-disabled="type=='R'" value="{{tableInf.tableName}}"/>
+	        </div>
+		</div>
+		
+		<div class="row" >
+			<div class="col-md-2 col-md-offset-1 content-right">
+	           <span class="xj-letter-space">表中文名: </span>
+	        </div>
+	         <div class="col-md-3  ">
+	           	<input  ng-disabled="type=='R'" value="{{tableInf.tableNameCn}}"/>
+	        </div>
+	        
+	        <div class="col-md-2 content-right ">
+	            <span class="xj-letter-space">表描述: </span>
+	        </div>
+	        <div class="col-md-3  ">
+	            <input ng-disabled="type=='R'" value="{{tableInf.tableDescription}}"/>
+	        </div>
+	    </div>
+	    
+	    
+	    <div class="row">
+	        <div class="col-md-2 col-md-offset-1 content-right">
+	            <span class="xj-letter-space">操作时间: </span>
+	        </div>
+	         <div class="col-md-3  ">
+	            <input disabled="disabled" value="{{tableInf.tableCrtTs}}"/>
+	        </div>
+	        
+	         <div class="col-md-2 content-right ">
+	            <span class="xj-letter-space">操作者: </span>
+	        </div>
+	         <div class="col-md-3  ">
+	             <input disabled="disabled" value="{{tableInf.tableCrtUsr}}"/>
+	        </div>
+	    </div>
+	    
+	    <button  class="oper-u btn-operate" ng-if="type=='C'" ng-click="createBaseInf()">添加表基本信息</button>
+	    <button  class="oper-u btn-operate" ng-if="type=='U'" ng-click="updateBaseInf()">修改表基本信息</button>
+		
+	</div>
+	
+	<div class="cut-off-line"></div>
+	
+	<div class="container  xj-query-bar">
+		<p>表字段信息</p>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="success">
+					<th class="text-center">字段id</th>
+					<th class="text-center">字段名</th>
+					<th class="text-center">字段中文名</th>
+					<th class="text-center">是否显示</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="fieldInf in fieldInfs">
+					<td>
+						 <input disabled="disabled" value="{{fieldInf.fieldId}}"/>
+					</td>
+					<td>
+						<input ng-disabled="type=='R'" value="{{fieldInf.fieldName}}"/>
+					</td>
+					<td>
+						<input ng-disabled="type=='R'" value="{{fieldInf.fieldNameCn}}"/>
+					</td>
+					<td>
+						<input ng-disabled="type=='R'" value="{{fieldInf.isShow}}"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div ng-include="'views/common/operate.html'"></div>
+	<div  style="margin-top: 70px;"></div>
+</div>

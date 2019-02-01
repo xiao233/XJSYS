@@ -15,7 +15,7 @@ public class BaseController {
 	 * @param request
 	 * @return
 	 */
-	UserInf getUserInf(HttpServletRequest request) {
+	protected UserInf getSessinUser(HttpServletRequest request) {
 		Object obj = request.getSession().getAttribute("userInf");
 		if(obj!=null) {
 			return (UserInf) obj;

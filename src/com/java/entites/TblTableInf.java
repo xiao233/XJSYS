@@ -2,7 +2,9 @@ package com.java.entites;
 
 import java.io.Serializable;
 
-public class TblTableInf implements Serializable{
+import com.java.entites.common.Page;
+
+public class TblTableInf extends Page implements Serializable{
 	/**
 	 * 
 	 */

@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<br/>
+<br/>
+<div ng-controller="myPageCtrl" id="page-container" ng-init="init()" >
+	<ul>
+		<li>pageSize:
+			<select ng-model="page.pageSize" ng-change="changePageSize()">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+			</select>
+		</li>
+		<li class="page-index">
+			<button ng-click="firstPage()">首页</button>	
+			<button ng-click="prePage()">上一页</button>
+			<div>1</div>
+			<div ng-show="page.pageTotal>=2">2</div>
+			<div ng-show="page.pageTotal>=3">3</div>
+			<div ng-show="page.pageTotal>=4">4</div>
+			<div ng-show="page.pageTotal>=5">5</div>	
+			<button  ng-click="nextPage()">下一页</button>	
+			<button  ng-click="lastPage()">尾页</button>
+		</li>
+		<li> <span id="span-pageCurr">{{page.pageCurr}}</span>/{{page.pageTotal}}页 &nbsp;共{{page.dataTotal}}条记录</li>
+		<li>
+			跳转到第
+			<input  id="unique-page" type="number" min="1" max="{{page.pageTotal}}" value="1" class="page-go">页
+			<button  style="float:right;" ng-click="goPage()">确定</button>
+		</li>
+	</ul>
+</div>

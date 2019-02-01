@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.constants.CodeMsgConstants;
-import com.java.entites.CodeMessageResult;
 import com.java.entites.UserInf;
+import com.java.entites.common.CodeMessageResult;
 import com.java.service.CodeImageService;
 import com.java.service.UserInfService;
 import com.java.utils.GetUUID;
@@ -50,6 +50,8 @@ public class IndexController {
 			HttpServletRequest request) {
 		Map<String,Object> rs = new HashMap<String,Object>();
 		CodeMessageResult<UserInf> cms = userInfService.loginRegister(userInf);
+		log.info(cms.getCode()+": "+cms.getMsg());
+		
 		if(cms.getCode().equals(CodeMsgConstants.L_LOGIN_SUCC)) {
 			request.getSession().setAttribute("userInf", cms.getResult().get(0));
 		}
