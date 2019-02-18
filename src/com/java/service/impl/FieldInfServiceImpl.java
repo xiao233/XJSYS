@@ -12,9 +12,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.java.constants.CodeMsgConstants;
 import com.java.dao.FieldInfDao;
 import com.java.dao.jdbc.CommonSQLOperationUtils;
 import com.java.entites.TblFieldInf;
+import com.java.entites.common.CodeMessageResult;
 import com.java.service.FieldInfService;
 import com.java.utils.StringUtils;
 import com.java.utils.WriteInFileUtils;
@@ -61,6 +63,121 @@ public class FieldInfServiceImpl implements FieldInfService {
 	}
 	
 
+	
+	@Override
+	public CodeMessageResult<TblFieldInf> updTblFieldsInf(TblFieldInf tblFieldInf) {
+		CodeMessageResult<TblFieldInf> rs = new CodeMessageResult<TblFieldInf>();
+		String code ="";
+		String msg = "";
+		if(tblFieldInf.getTableId()==null) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "表id(tableId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		
+		if(StringUtils.isEmpty(tblFieldInf.getFieldId())) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "字段id(fieldId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		
+		try {
+			fieldInfDao.updTblFieldsInf(tblFieldInf);
+			msg = CodeMsgConstants.UPDATE_SUCCESS_MSG;
+			code = CodeMsgConstants.UPDATE_SUCCESS;
+		}catch (Exception e) {
+			log.error("更新异常: "+e.getMessage());
+			msg = CodeMsgConstants.UPDATE_FAILD_MSG;
+			code = CodeMsgConstants.UPDATE_FAILD;
+		}
+		log.info(code+": "+msg);
+		rs.setCode(code);
+		rs.setMsg(msg);
+		return rs;
+	}
+
+	@Override
+	public CodeMessageResult<TblFieldInf> deleteTblFieldsInf(TblFieldInf tblFieldInf) {
+		CodeMessageResult<TblFieldInf> rs = new CodeMessageResult<TblFieldInf>();
+		String code ="";
+		String msg = "";
+		if(tblFieldInf.getTableId()==null) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "表id(tableId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		
+		if(StringUtils.isEmpty(tblFieldInf.getFieldId())) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "字段id(fieldId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		try {
+			fieldInfDao.deleteTblFieldsInf(tblFieldInf);
+			msg = CodeMsgConstants.DELETE_SUCCESS_MSG;
+			code = CodeMsgConstants.DELETE_SUCCESS;
+		}catch (Exception e) {
+			log.error("删除异常: "+e.getMessage());
+			msg = CodeMsgConstants.DELETE_FAILD_MSG;
+			code = CodeMsgConstants.DELETE_FAILD;
+		}
+		log.info(code+": "+msg);
+		rs.setCode(code);
+		rs.setMsg(msg);
+		return rs;
+	}
+
+	@Override
+	public CodeMessageResult<TblFieldInf> createTblFieldsInf(TblFieldInf tblFieldInf) {
+		CodeMessageResult<TblFieldInf> rs = new CodeMessageResult<TblFieldInf>();
+		String code ="";
+		String msg = "";
+		
+		if(tblFieldInf.getTableId()==null) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "表id(tableId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		
+		if(StringUtils.isEmpty(tblFieldInf.getFieldId())) {
+			code = CodeMsgConstants.DELETE_FAILD;
+			msg = "字段id(fieldId)不能为空！";
+			rs.setCode(code);
+			rs.setMsg(msg);
+			log.info(code+": "+msg);
+			return rs;
+		}
+		
+		try {
+			fieldInfDao.createTblFieldsInf(tblFieldInf);
+			msg = CodeMsgConstants.CREATE_SUCCESS_MSG;
+			code = CodeMsgConstants.CREATE_SUCCESS;
+		}catch (Exception e) {
+			log.error("新增异常: "+e.getMessage());
+			msg = CodeMsgConstants.CREATE_FAILD_MSG;
+			code = CodeMsgConstants.CREATE_FAILD;
+		}
+		log.info(code+": "+msg);
+		rs.setCode(code);
+		rs.setMsg(msg);
+		return rs;
+	}
+
 	/**
 	 * 解析查询字段
 	 * 2018-12-25 14:28:12
@@ -79,5 +196,6 @@ public class FieldInfServiceImpl implements FieldInfService {
 		}
 		return queryFields;
 	}
+	
 
 }

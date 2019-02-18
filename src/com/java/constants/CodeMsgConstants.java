@@ -87,34 +87,43 @@ public class CodeMsgConstants {
 	 * ²éÑ¯Ê§°Ü
 	 */
 	public static final String QUERY__FAILD= "Q0002";
-	public static final String QUERY__FAILD_MSG = "²éÑ¯Ê§°Ü!";
+	public static final String QUERY__FAILD_MSG = "²éÑ¯Ê§°Ü£¡";
 	
 	/**
 	 * ¸üÐÂ³É¹¦
 	 */
 	public static final String UPDATE_SUCCESS = "U0000";
+	public static final String UPDATE_SUCCESS_MSG = "¸üÐÂ³É¹¦£¡";
+	
 	/**
 	 * ¸üÐÂÊ§°Ü
 	 */
 	public static final String UPDATE_FAILD = "U0001";
+	public static final String UPDATE_FAILD_MSG = "¸üÐÂÊ§°Ü£¡";
 	
 	/**
 	 * É¾³ý³É¹¦
 	 */
 	public static final String DELETE_SUCCESS = "D0000";
+	public static final String DELETE_SUCCESS_MSG = "É¾³ý³É¹¦£¡";
+	
 	/**
 	 * É¾³ýÊ§°Ü
 	 */
 	public static final String DELETE_FAILD = "D0001";
+	public static final String DELETE_FAILD_MSG = "É¾³ýÊ§°Ü£¡";
 	
 	/**
 	 * Ìí¼Ó³É¹¦
 	 */
 	public static final String CREATE_SUCCESS = "C0000";
+	public static final String CREATE_SUCCESS_MSG = "Ìí¼Ó³É¹¦£¡";
+	
 	/**
 	 * Ìí¼ÓÊ§°Ü
 	 */
 	public static final String CREATE_FAILD = "C0001";
+	public static final String CREATE_FAILD_MSG = "Ìí¼ÓÊ§°Ü£¡";
 	
 	
 }

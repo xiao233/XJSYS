@@ -51,4 +51,82 @@
     	FROM VIEW_TABLE_FIELD WHERE TABLE_NAME = #{tableName}
     </select>
     
+    <update id="updTblFieldsInf" parameterType="com.java.entites.TblFieldInf">
+    	UPDATE TBL_FIELD_INF
+    	<set>
+    		<if test=" fieldName !=null and fieldName != '' ">
+    			 FIELD_NAME = #{fieldName},
+    		</if>
+    		
+    		<if test=" fieldNameCn !=null and fieldNameCn != '' ">
+    			 FIELD_NAME_CN = #{fieldNameCn},
+    		</if>
+    		
+    		<if test=" isShow !=null and isShow != '' ">
+    			 IS_SHOW = #{isShow},
+    		</if>
+    	</set>
+    	WHERE TABLE_ID = #{tableId} AND  FIELD_ID = #{fieldId}
+    </update>
+    
+    <delete id="deleteTblFieldsInf" parameterType="com.java.entites.TblFieldInf">
+    	DELETE  FROM TBL_FIELD_INF
+    	<where>
+    		<if test=" tableId !=null and tableId != '' ">
+    			AND TABLE_ID = #{tableId}
+    		</if>
+    		
+    		<if test=" fieldId !=null and fieldId != '' ">
+    			AND FIELD_ID = #{fieldId}
+    		</if>
+    		
+    	</where>
+    </delete>
+    
+    <insert id="createTblFieldsInf" parameterType="com.java.entites.TblFieldInf">
+         	INSERT into TBL_FIELD_INF
+         	<trim prefix="(" suffix=")" suffixOverrides=",">
+         		<if test=" tableId !=null and tableId != '' ">
+    				 TABLE_ID ,
+	    		</if>
+	    		
+	    		<if test=" fieldId !=null and fieldId != '' ">
+	    			 FIELD_ID ,
+	    		</if>
+	    		
+	    		<if test=" fieldName !=null and fieldName != '' ">
+	    			 FIELD_NAME ,
+	    		</if>
+	    		
+	    		<if test=" fieldNameCn !=null and fieldNameCn != '' ">
+	    			 FIELD_NAME_CN ,
+	    		</if>
+	    		
+	    		<if test=" isShow !=null and isShow != '' ">
+	    			 IS_SHOW ,
+	    		</if>
+         	</trim>
+         	VALUES
+         	<trim prefix="(" suffix=")" suffixOverrides=",">
+         		<if test=" tableId !=null and tableId != '' ">
+	    			 #{tableId},
+	    		</if>
+	    		
+	    		<if test=" fieldId !=null and fieldId != '' ">
+	    			 #{fieldId},
+	    		</if>
+	    		
+	    		<if test=" fieldName !=null and fieldName != '' ">
+	    			 #{fieldName},
+	    		</if>
+	    		
+	    		<if test=" fieldNameCn !=null and fieldNameCn != '' ">
+	    			 #{fieldNameCn},
+	    		</if>
+	    		
+	    		<if test=" isShow !=null and isShow != '' ">
+	    			 #{isShow},
+	    		</if>
+         	</trim>
+    </insert>
 </mapper>

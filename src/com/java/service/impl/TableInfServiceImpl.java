@@ -5,9 +5,12 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.java.constants.CodeMsgConstants;
+import com.java.dao.FieldInfDao;
 import com.java.dao.TableInfDao;
+import com.java.entites.TblFieldInf;
 import com.java.entites.TblTableInf;
 import com.java.entites.common.CodeMessageResult;
 import com.java.service.TableInfService;
@@ -20,6 +23,8 @@ public class TableInfServiceImpl implements TableInfService {
 
 	@Autowired
 	private TableInfDao tableDao;
+	@Autowired
+	private FieldInfDao fieldInfDao;
 	@Override
 	public CodeMessageResult<TblTableInf> queryAll(TblTableInf tableInf) {
 		
@@ -100,6 +105,7 @@ public class TableInfServiceImpl implements TableInfService {
 	}
 	
 	@Override
+	@Transactional
 	public CodeMessageResult<TblTableInf> deleteTableInf(TblTableInf tableInf) {
 		CodeMessageResult<TblTableInf> rs = new CodeMessageResult<TblTableInf>();
 		if(tableInf==null || (StringUtils.isEmpty(tableInf.getTableId()+"")
@@ -112,6 +118,9 @@ public class TableInfServiceImpl implements TableInfService {
 		}
 		try {
 			tableDao.deleteTableInf(tableInf);
+			TblFieldInf tblFieldInf = new TblFieldInf();
+			tblFieldInf.setTableId(tableInf.getTableId());
+			fieldInfDao.deleteTblFieldsInf(tblFieldInf);
 		}catch (Exception e) {
 			log.error("É¾³ýÒì³£:"+e.getMessage());
 			rs.setCode(CodeMsgConstants.DELETE_FAILD);

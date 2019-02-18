@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.entites.TblFieldInf;
+import com.java.entites.common.CodeMessageResult;
 
 /**
  * 获取字段信息
@@ -28,4 +29,28 @@ public interface FieldInfService {
 	 * @param searchParamObject
 	 */
 	void exportTableInf(HttpServletResponse response, HttpServletRequest request);
+
+	/**
+	 * 更新表信息
+	 * 2019-02-18 14:26:46
+	 * @param tblFieldInf
+	 * @return
+	 */
+	public CodeMessageResult<TblFieldInf> updTblFieldsInf(TblFieldInf tblFieldInf);
+
+	/**
+	 * 根据fieldId删除字段信息
+	 * 2019-02-18 14:28:38
+	 * @param tblFieldInf
+	 * @return
+	 */
+	public CodeMessageResult<TblFieldInf> deleteTblFieldsInf(TblFieldInf tblFieldInf);
+
+	/**
+	 * 增加表字段信息
+	 * 2019-02-18 14:30:12
+	 * @param tblFieldInf
+	 * @return
+	 */
+	public CodeMessageResult<TblFieldInf> createTblFieldsInf(TblFieldInf tblFieldInf);
 }

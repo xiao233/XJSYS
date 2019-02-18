@@ -63,7 +63,12 @@
 	<div class="cut-off-line"></div>
 	
 	<div class="container  xj-query-bar">
-		<p>表字段信息</p>
+		<p>表字段信息&nbsp;&nbsp;&nbsp;&nbsp;
+			<span id="add_fields" ng-click="addStruct()" style="background-color: #C0FF3E;">
+				+点此添加记录
+			</span>
+		</p>
+		
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr class="success">
@@ -73,7 +78,7 @@
 					<th class="text-center">是否显示</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="fields_inf">
 				<tr ng-repeat="fieldInf in fieldInfs">
 					<td>
 						 <input disabled="disabled" value="{{fieldInf.fieldId}}"/>

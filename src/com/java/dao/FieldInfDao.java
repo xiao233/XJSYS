@@ -9,9 +9,15 @@ import com.java.entites.TblFieldInf;
  * @author xjl
  * 2018-12-24 13:46:59
  */
-public interface FieldInfDao {
+public interface FieldInfDao{
 	
 	List<TblFieldInf> getFieldInf(TblFieldInf tblFieldInf);
 	
 	List<TblFieldInf> getTableFieldInf(TblFieldInf tblFieldInf);
+
+	void updTblFieldsInf(TblFieldInf tblFieldInf);
+
+	void deleteTblFieldsInf(TblFieldInf tblFieldInf);
+
+	void createTblFieldsInf(TblFieldInf tblFieldInf);
 }

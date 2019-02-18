@@ -26,7 +26,7 @@ app.controller("exImportCtrl",["$scope","$http",function($scope,$http){
 	//获取导入的表下拉框
 	function searchTableInf(){
 		$http
-			.post("/XJSYS/table/query")
+			.post("/XJSYS/table/query",{})
 			.then(function(res){
 				var data = res.data;
 				var code = data.code;
@@ -62,7 +62,7 @@ app.controller("exImportCtrl",["$scope","$http",function($scope,$http){
 	$scope.searchFieldInf = function(){
 		var fileName = getFileName();
 		$http
-			.post("/XJSYS/table/field",{"searchObj":{"exportTableName":$scope.exportTableName}})
+			.post("/XJSYS/field/query",{"searchObj":{"exportTableName":$scope.exportTableName}})
 			.then(function(res){
 				$scope.tableFieldInfs=res.data;
 			})

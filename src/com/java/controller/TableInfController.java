@@ -1,6 +1,5 @@
 package com.java.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.java.entites.TblFieldInf;
 import com.java.entites.TblTableInf;
 import com.java.entites.UserInf;
 import com.java.entites.common.CodeMessageResult;
@@ -59,6 +57,10 @@ public class TableInfController extends BaseController{
 		tableInf.setPageSize(pageSize);
 		if(!StringUtils.isEmpty(tableName)) {
 			tableInf.setTableName(tableName);
+		}
+		
+		if(pageSize==0) {
+			return tableInfService.queryAll(tableInf);
 		}
 		return tableInfService.queryPageAll(tableInf);
 	}
@@ -179,20 +181,6 @@ public class TableInfController extends BaseController{
 		code+=fileName.getOriginalFilename();
 		cmr.setCode(code);
 		return cmr;
-	}
-	
-	/**
-	 * 获取选中表的字段信息
-	 * 2018-12-21 15:20:51
-	 * @param exportTableName
-	 * @return
-	 */
-	@RequestMapping(value="/field",method=RequestMethod.POST)
-	@ResponseBody
-	public List<TblFieldInf> tblFieldsInf(@RequestBody SearchParamObject searchParamObject){
-		String exportTableName = searchParamObject.getSearchObj().get("exportTableName");
-		log.info("》》》》》》开始查询表字段信息");
-		return fieldInfService.getFieldInfByTableName(exportTableName);
 	}
 	
 	/**

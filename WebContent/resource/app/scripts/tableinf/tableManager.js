@@ -37,6 +37,7 @@ app.controller("tableManagerCtrl",["$scope","$http","$state",function($scope,$ht
 	$scope.init = function(){
 		$scope.page.pageCurr=1;
 		queryInf();
+		$scope.searchInf();
 	}
 	
 	
@@ -46,23 +47,26 @@ app.controller("tableManagerCtrl",["$scope","$http","$state",function($scope,$ht
 		$http
 		.post("/XJSYS/table/query",{"searchObj":{"tableName":$scope.tableName},
 			"pageCurr":$scope.page.pageCurr,
-			"pageSize":$scope.page.pageSize})
+			"pageSize":"0"})
 		.then(function(res){
 			var data = res.data;
 			var code = data.code;
 			if(code!='Q0000'){
 				alert(data.msg);
 			}else{
-				$scope.tableInfs = data.result;
 				$scope.tableInfsDrop = data.result;
-				$scope.page.pageTotal = data.page.pageTotal;
-				$scope.page.dataTotal = data.page.dataTotal;
 			}
 		})
 	};
 	
 	//查询按钮
+	$scope.searchInfCon=function(){
+		$scope.page.pageCurr=1;
+		$scope.searchInf();
+	}
+	
 	$scope.searchInf=function(){
+		
 		$http
 		.post("/XJSYS/table/query",{"searchObj":{"tableName":$scope.tableName},
 			"pageCurr":$scope.page.pageCurr,
