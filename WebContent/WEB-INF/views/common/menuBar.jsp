@@ -16,13 +16,13 @@
 					二维码服务
 					<span class="no-show-style">enDecode</span>
 				</li>
-				<li class="menu-lever-two">ip地址</li>
-				<li class="menu-lever-two">进制转换</li>
+				<li class="menu-lever-two">ip地址服务</li>
+				<li class="menu-lever-two">进制转换服务</li>
 				<li class="menu-lever-two">
 					导入/导出服务
 					<span class="no-show-style">exImport</span>
 				</li>
-				<li class="menu-lever-two">发送邮件</li>
+				<li class="menu-lever-two">发送邮件服务</li>
 			</ul>
 		</li>
 	</ul>

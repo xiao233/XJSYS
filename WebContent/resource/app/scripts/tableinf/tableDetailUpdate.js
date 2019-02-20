@@ -120,15 +120,18 @@ app.controller("tableDetailUpdateCtrl",["$scope","$http","$stateParams",function
 			alert("请选择一条数据！");
 			return;
 		}
-		$http
-		.post("/XJSYS/field/delete",getFieldInf($(".xj-content-color input")))
-		.then(function(res){
-			if(res.data.code=="D0000"){
-				$scope.queryField();
-			}else{
-				alert(res.data.msg);
-			}
-		});
+		
+		if(confirm("确定要删除吗？")){
+			$http
+			.post("/XJSYS/field/delete",getFieldInf($(".xj-content-color input")))
+			.then(function(res){
+				if(res.data.code=="D0000"){
+					window.location.reload();
+				}else{
+					alert(res.data.msg);
+				}
+			});
+		}
 	}
 	
 	//增加

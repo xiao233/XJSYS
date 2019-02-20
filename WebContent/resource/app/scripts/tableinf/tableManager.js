@@ -118,15 +118,17 @@ app.controller("tableManagerCtrl",["$scope","$http","$state",function($scope,$ht
 			return;
 		}
 		var tableId = $(".xj-content-color>td").eq(0).text();
-		$http
-		.post("/XJSYS/table/delete/table",{"searchObj":{"tableId":tableId}})
-		.then(function(res){
-			if(res.data.code="D0000"){
-				$scope.searchInf();
-			}else{
-				alert(res.data.msg)
-			}
-		})
+		if(confirm("确定要删除吗？")){
+			$http
+			.post("/XJSYS/table/delete/table",{"searchObj":{"tableId":tableId}})
+			.then(function(res){
+				if(res.data.code="D0000"){
+					$scope.searchInf();
+				}else{
+					alert(res.data.msg)
+				}
+			})
+		}
 	}
 	
 	//增加
