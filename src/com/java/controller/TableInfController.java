@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.java.constants.CodeMsgConstants;
 import com.java.entites.TblTableInf;
 import com.java.entites.UserInf;
 import com.java.entites.common.CodeMessageResult;
@@ -132,7 +133,15 @@ public class TableInfController extends BaseController{
 		
 		
 		TblTableInf tableInf = getQueryParams(searchObj);
-		rs =  tableInfService.deleteTableInf(tableInf);
+		try {
+			rs =  tableInfService.deleteTableInf(tableInf);
+		}catch (Exception e) {
+			log.error("删除异常:"+e.getMessage());
+			rs.setCode(CodeMsgConstants.DELETE_FAILD);
+			rs.setMsg("删除数据库数据异常！");
+			return rs;
+		}
+		
 		
 		return rs;
 	}

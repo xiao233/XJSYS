@@ -60,18 +60,13 @@ public class TableInfServiceImpl implements TableInfService {
 		try {
 			
 			int dataTotal = tableDao.queryCount(tableInf);
-			if(dataTotal<1) {
-				code = CodeMsgConstants.QUERY_SUCC_NO_RECORD;
-				msg = CodeMsgConstants.QUERY_SUCC_NO_RECORD_MSG;
-			}else {
-				List<TblTableInf> list = tableDao.queryPageAll(tableInf);
-				rs.getPage().setDataTotal(dataTotal);
-				rs.getPage().setPageTotal((int)Math.ceil(dataTotal*1.0/tableInf.getPageSize()));
-				
-				code = CodeMsgConstants.QUERY_SUCC_HAS_RECORD;
-				msg = CodeMsgConstants.QUERY_SUCC_HAS_RECORD_MSG;
-				rs.setResult(list);
-			}
+			List<TblTableInf> list = tableDao.queryPageAll(tableInf);
+			rs.getPage().setDataTotal(dataTotal);
+			rs.getPage().setPageTotal((int)Math.ceil(dataTotal*1.0/tableInf.getPageSize()));
+			
+			code = CodeMsgConstants.QUERY_SUCC_HAS_RECORD;
+			msg = CodeMsgConstants.QUERY_SUCC_HAS_RECORD_MSG;
+			rs.setResult(list);
 		}catch(Exception e) {
 			log.error(e.getMessage());
 			code = CodeMsgConstants.QUERY__FAILD;
@@ -116,17 +111,12 @@ public class TableInfServiceImpl implements TableInfService {
 			rs.setMsg("删除失败: 表不能为空!");
 			return rs;
 		}
-		try {
-			tableDao.deleteTableInf(tableInf);
-			TblFieldInf tblFieldInf = new TblFieldInf();
-			tblFieldInf.setTableId(tableInf.getTableId());
-			fieldInfDao.deleteTblFieldsInf(tblFieldInf);
-		}catch (Exception e) {
-			log.error("删除异常:"+e.getMessage());
-			rs.setCode(CodeMsgConstants.DELETE_FAILD);
-			rs.setMsg("删除数据库数据异常！");
-			return rs;
-		}
+		
+		tableDao.deleteTableInf(tableInf);
+		TblFieldInf tblFieldInf = new TblFieldInf();
+		tblFieldInf.setTableId(tableInf.getTableId());
+		fieldInfDao.deleteTblFieldsInf(tblFieldInf);
+		
 		rs.setCode(CodeMsgConstants.DELETE_SUCCESS);
 		return rs;
 	}

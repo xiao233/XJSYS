@@ -122,7 +122,7 @@ app.controller("tableManagerCtrl",["$scope","$http","$state",function($scope,$ht
 			$http
 			.post("/XJSYS/table/delete/table",{"searchObj":{"tableId":tableId}})
 			.then(function(res){
-				if(res.data.code="D0000"){
+				if(res.data.code=="D0000"){
 					$scope.searchInf();
 				}else{
 					alert(res.data.msg)
