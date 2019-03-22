@@ -37,7 +37,7 @@ public class IndexController {
 	}
 	
 	/**
-	 * ç™»å½•æˆ–æ³¨å†Œ
+	 * µÇÂ¼»ò×¢²á
 	 * 2018-09-13 13:42:40
 	 * @param userInf
 	 * @param model
@@ -56,7 +56,7 @@ public class IndexController {
 			request.getSession().setAttribute("userInf", cms.getResult().get(0));
 		}
 		
-		//ç™»å½•å¤±è´¥æˆ–æ³¨å†Œå¤±è´¥ï¼Œåˆ™åˆ·æ–°éªŒè¯ç 
+		//µÇÂ¼Ê§°Ü»ò×¢²áÊ§°Ü£¬ÔòË¢ĞÂÑéÖ¤Âë
 		if(!cms.getCode().equals(CodeMsgConstants.L_LOGIN_SUCC)
 				&&!cms.getCode().equals(CodeMsgConstants.R_REGISTER_SUCC)) {
 			String codeImageBase64str="";
@@ -76,7 +76,7 @@ public class IndexController {
 	}
 	
 	/**
-	 * é¦–é¡µ
+	 * Ê×Ò³
 	 * 2018-09-14 09:15:20
 	 * @return
 	 */

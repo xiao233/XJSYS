@@ -23,10 +23,10 @@ public class InitListener extends ContextLoaderListener{
 	public void contextInitialized(ServletContextEvent event) {
 		super.contextInitialized(event);
 		try {
-			log.info("å¼€å§‹åˆå§‹åŒ–-------------");
+			log.info("¿ªÊ¼³õÊ¼»¯-------------");
 			PropertiesUtils.initConfigProperties();
 		}catch(Exception e) {
-			log.error("åˆå§‹åŒ–é…ç½®æ–‡ä»¶å¤±è´¥ã€‚"+e.getMessage());
+			log.error("³õÊ¼»¯ÅäÖÃÎÄ¼şÊ§°Ü"+e.getMessage());
 		}
 		
 		

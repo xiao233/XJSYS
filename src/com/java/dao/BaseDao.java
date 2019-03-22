@@ -2,8 +2,6 @@ package com.java.dao;
 
 import java.util.List;
 
-import com.java.entites.TblTableInf;
-
 /**
  * Õ®”√≤È—Ø
  * @author xjl

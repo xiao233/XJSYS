@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import com.java.constants.CommonConstants;
 
 /**
- * åŠ è½½é…ç½®æ–‡ä»¶å·¥å…·ç±»
+ * ¼ÓÔØÅäÖÃÎÄ¼ş¹¤¾ßÀà
  * @author xjl
  * 2018-08-25 11:31:14
  */
@@ -28,31 +28,31 @@ public class LoadProperties {
 		FileInputStream inputStream = null;
 		
 		/**
-		 * è¯»å–å¤–éƒ¨é…ç½®æ–‡ä»¶
+		 * ¶ÁÈ¡Íâ²¿ÅäÖÃÎÄ¼ş
 		 */
 		try {
 			File file = new File(CommonConstants.APP_CONFIG_PATH+File.separator+filename);
 			inputStream = new FileInputStream(file);
 			properties.load(new InputStreamReader(inputStream,"UTF-8"));
-			log.info("LoadProperties: ä»"+CommonConstants.APP_CONFIG_PATH+"è¯»å–å¤–éƒ¨é…ç½®æ–‡ä»¶");
+			log.info("LoadProperties: ´Ó"+CommonConstants.APP_CONFIG_PATH+"¶ÁÈ¡Íâ²¿ÅäÖÃÎÄ¼ş");
 		}catch(Exception e) {
 			log.error(e.getMessage());
 		}
 		
 		/**
-		 * ä»classpathé‡Œé¢åŠ è½½é…ç½®ä¿¡æ¯
+		 * ´ÓclasspathÀïÃæ¼ÓÔØÅäÖÃĞÅÏ¢
 		 */
 		if(inputStream == null) {
 			URL url =  getClass().getClassLoader().getResource("resource/"+filename);
 			properties.load(new InputStreamReader(url.openStream(),"UTF-8"));
-			log.info("LoadProperties: ä»classpathåŠ è½½é…ç½®æ–‡ä»¶");
+			log.info("LoadProperties: ´ÓclasspathÀïÃæ¼ÓÔØÅäÖÃĞÅÏ¢");
 		}
 		
 		
 		return properties;
 	}
 	/**
-	 * è¯»å–xssé…ç½®ä¿¡æ¯
+	 * ¶ÁÈ¡xssÅäÖÃĞÅÏ¢
 	 * 2018-09-17 10:54:33
 	 * @param appXssBlackName
 	 * @return
@@ -63,19 +63,19 @@ public class LoadProperties {
 		InputStream inputStream  = null;
 		
 		try {
-			//tomcatä¸‹é…ç½®æ–‡ä»¶
+			//tomcatÏÂÅäÖÃÎÄ¼ş
 			inputStream  = new FileInputStream(file);
 		} catch (FileNotFoundException e) {
-			log.error(CommonConstants.APP_CONFIG_PATH+File.separator+appXssBlackName+"æ–‡ä»¶ä¸å­˜åœ¨ï¼");
+			log.error(CommonConstants.APP_CONFIG_PATH+File.separator+appXssBlackName+"ÎÄ¼ş²»´æÔÚ£¡");
 		}
-		//classpathä¸‹é…ç½®æ–‡ä»¶
+		//classpathÏÂÅäÖÃÎÄ¼ş
 		if(inputStream==null) {
 			URL url =  getClass().getClassLoader().getResource("resource/"+appXssBlackName);
 			inputStream= url.openStream();
 		}
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
 		String lines = "";
-		log.info("å¼€å§‹è¯»å–"+CommonConstants.APP_XSS_BLACK_NAME+"æ–‡ä»¶ä¿¡æ¯ï¼");
+		log.info("¿ªÊ¼¶ÁÈ¡"+CommonConstants.APP_XSS_BLACK_NAME+"ÎÄ¼şĞÅÏ¢");
 		String content = "";
 		while((lines=bufferedReader.readLine())!=null) {
 			if(lines.indexOf("#")<0) {

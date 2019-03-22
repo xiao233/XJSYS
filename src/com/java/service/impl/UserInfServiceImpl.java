@@ -29,7 +29,7 @@ public class UserInfServiceImpl implements UserInfService {
 		String msg = "";
 		try {
 			if(cms.getCode().equals(CodeMsgConstants.L_LOGIN_SUCC)) {
-				msg+="ç™»å½•";
+				msg+="µÇÂ¼";
 				List<UserInf> list = userInfDao.checkUserInf(userInf);
 				if(list!=null && list.size()>0) {
 					cms.setResult(list);
@@ -39,7 +39,7 @@ public class UserInfServiceImpl implements UserInfService {
 					msg=CodeMsgConstants.L_LOGIN_FAIL_MSG;
 				}
 			}else if(cms.getCode().equals(CodeMsgConstants.R_REGISTER_SUCC)){
-				msg="æ³¨å†Œ";
+				msg="×¢²á";
 				fillDefaultValues(userInf);
 				userInfDao.register(userInf);
 				msg=CodeMsgConstants.R_REGISTER_SUCC_MSG;
@@ -83,21 +83,21 @@ public class UserInfServiceImpl implements UserInfService {
 			return cms;
 		}
 		
-		//éªŒè¯å›¾ç‰‡éªŒè¯ç 
+		//ÑéÖ¤Í¼Æ¬ÑéÖ¤Âë
 		String enterCodeImage = userInf.getCodeImage();
 		String codeKey = userInf.getCodeKey();
-		if(StringUtils.isEmpty(enterCodeImage)) {//è¾“å…¥çš„å›¾ç‰‡éªŒè¯ç ä¸ºç©º
+		if(StringUtils.isEmpty(enterCodeImage)) {//ÊäÈëµÄÍ¼Æ¬ÑéÖ¤ÂëÎª¿Õ
 			code=CodeMsgConstants.CODE_IS_EMPTY;
 			msg=CodeMsgConstants.CODE_IS_EMPTY_MSG;
-		}else if(StringUtils.isEmpty(codeKey)){//ä¿å­˜å›¾ç‰‡éªŒè¯ç çš„keyä¸ºç©º
+		}else if(StringUtils.isEmpty(codeKey)){//±£´æÍ¼Æ¬ÑéÖ¤ÂëµÄkeyÎª¿Õ
 			code=CodeMsgConstants.CODE_REDIS_ERROR;
 			msg=CodeMsgConstants.CODE_REDIS_ERROR_MSG;
 		}else {
 			String codeImage = RedisUtils.getString(codeKey);
-			if(StringUtils.isEmpty(codeImage)) {//ä»redisè·å–å›¾ç‰‡éªŒè¯ç ä¸ºç©º
+			if(StringUtils.isEmpty(codeImage)) {//´Óredis»ñÈ¡Í¼Æ¬ÑéÖ¤ÂëÎª¿Õ
 				code=CodeMsgConstants.CODE_REDIS_ERROR;
 				msg=CodeMsgConstants.CODE_REDIS_ERROR_MSG;
-			}else if(!codeImage.toLowerCase().equals(enterCodeImage.toLowerCase())){//è¾“å…¥éªŒè¯ç ä¸å¯¹
+			}else if(!codeImage.toLowerCase().equals(enterCodeImage.toLowerCase())){//ÊäÈëÑéÖ¤Âë²»¶Ô
 				code=CodeMsgConstants.CODE_IS_ERROR;
 				msg=CodeMsgConstants.CODE_IS_ERROR_MSG;
 			}
@@ -108,7 +108,7 @@ public class UserInfServiceImpl implements UserInfService {
 			cms.setMsg(msg);
 			return cms;
 		}
-		//åˆ°è¿™å›¾ç‰‡éªŒè¯ç è¾“å…¥æ­£ç¡®
+		//µ½ÕâÍ¼Æ¬ÑéÖ¤ÂëÊäÈëÕıÈ·
 		
 		
 		if(userInf.getIsLogin().equals(CommonConstants.IS_LOGIN)) {
@@ -129,7 +129,7 @@ public class UserInfServiceImpl implements UserInfService {
 	}
 
 	/**
-	 * å½“å±æ€§ä¸ºnullå¡«å……åˆå§‹å€¼
+	 * µ±ÊôĞÔÎªnullÌî³ä³õÊ¼Öµ
 	 * 2018-09-12 17:33:45
 	 * @param userInf
 	 */

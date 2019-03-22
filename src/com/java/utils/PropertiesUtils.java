@@ -18,7 +18,7 @@ public class PropertiesUtils {
 			log.info("a==="+a);
 			xssBlack = loadProperties.getXSSBlack(CommonConstants.APP_XSS_BLACK_NAME);
 		} catch (IOException e) {
-			log.error("[PropertiesUtils.initConfigProperties] åŠ è½½é…ç½®æ–‡ä»¶å¤±è´¥ï¼š "+e.getMessage());
+			log.error("[PropertiesUtils.initConfigProperties] ¼ÓÔØÅäÖÃÎÄ¼şÊ§°Ü£¡"+e.getMessage());
 		}
 		
 	}
