@@ -44,7 +44,10 @@
 					表信息管理
 					<span class="no-show-style">tableManager</span>
 				</li>
-				<li class="menu-lever-two">地址信息管理</li>
+				<li class="menu-lever-two">
+					地址信息管理
+					<span class="no-show-style">addrManager</span>
+				</li>
 			</ul>
 		</li>
 	</ul>

@@ -65,10 +65,10 @@ public class CodeMsgConstants {
 	public static final String CODE_BORN_FAIL = "0005";
 	public static final String CODE_BORN_FAIL_MSG = " 生成图片验证码失败！";
 	/**
-	 * 从redis获取图片验证码异常
+	 * 从redis获取图片验证码异常,比如超过存活时间
 	 */
 	public static final String CODE_REDIS_ERROR = "0006";
-	public static final String CODE_REDIS_ERROR_MSG = "从redis获取图片验证码异常！";
+	public static final String CODE_REDIS_ERROR_MSG = "图片验证码输入超时！";
 	
 	/**
 	 * 查询成功，但没有记录

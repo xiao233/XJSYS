@@ -43,6 +43,10 @@
   	<listener-class>com.java.listener.InitListener</listener-class>
   </listener>
   
+  <listener>
+  	<listener-class>com.java.listener.SchedulerListener</listener-class>
+  </listener>
+  
   
   <!--编码过滤器-->
   <filter>
@@ -64,10 +68,16 @@
   </filter-mapping>
   
   
-  <!-- 跨站式攻击过滤器 -->
+  <!-- 跨站式攻击、是否登录过滤器 -->
   <filter>
   	<filter-name>RefererFilter</filter-name>
   	<filter-class>com.java.filter.RefererFilter</filter-class>
+  	
+  	<!-- 白名单 -->
+  	<init-param>
+  		<param-name>excuteUrl</param-name>
+  		<param-value>/test/route1,/test/route2</param-value>
+  	</init-param>
   </filter>
   <filter-mapping>
   	<filter-name>RefererFilter</filter-name>

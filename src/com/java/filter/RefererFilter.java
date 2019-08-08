@@ -21,6 +21,8 @@ import com.java.utils.StringUtils;
 public class RefererFilter implements Filter {
 
 	private String rootURL;
+	
+	private String excuteUrls[];
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -34,6 +36,12 @@ public class RefererFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession();
 		
+		String current = request.getServletPath();
+		if(isWhite(current)) {
+			fc.doFilter(req, res);
+			return;
+		}
+		
 		/**
 		 * 判断用户是否登录
 		 */
@@ -43,7 +51,7 @@ public class RefererFilter implements Filter {
 			return;
 		}
 		String referer = request.getHeader("Referer");
-		String current = request.getServletPath();
+		
 		if(rootURL==null) {
 			String temp = request.getRequestURL().toString();
 			String contentPath = request.getContextPath();
@@ -54,6 +62,21 @@ public class RefererFilter implements Filter {
 			return;
 		}
 		fc.doFilter(req, res);
+	}
+
+	/**
+	 * 验证当前路劲是否是放行
+	 * 2019-03-22 16:06:11
+	 * @param current
+	 * @return
+	 */
+	private boolean isWhite(String current) {
+		for (String string : excuteUrls) {
+			if(current!=null&&current.startsWith(string)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -78,8 +101,10 @@ public class RefererFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-
+		String excuteUrl = arg0.getInitParameter("excuteUrl");
+		if(excuteUrl!=null) {
+			excuteUrls = excuteUrl.split(",");
+		}
 	}
 
 }

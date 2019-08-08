@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.java.constants.CodeMsgConstants;
 import com.java.dao.FieldInfDao;
@@ -140,6 +141,7 @@ public class FieldInfServiceImpl implements FieldInfService {
 	}
 
 	@Override
+	@Transactional
 	public CodeMessageResult<TblFieldInf> createTblFieldsInf(TblFieldInf tblFieldInf) {
 		CodeMessageResult<TblFieldInf> rs = new CodeMessageResult<TblFieldInf>();
 		String code ="";

@@ -78,7 +78,28 @@ app.config(["$stateProvider","$ocLazyLoadProvider","$urlRouterProvider",
 				}]
 			}
 		});
+		
+		//地址信息管理
+		sp.state("addrManager",{
+			url:'/addrManager',
+			templateUrl:'views/addressinf/addrManager.html',
+			controller:'addrManagerCtrl',
+			resolve:{
+				loadMyCtrl:["$ocLazyLoad",function($ocLazyLoad){
+					return $ocLazyLoad.load({
+						name:'app.addrManagerCtrl',
+						files:['scripts/addressinf/addrManager.js']
+					})
+				}]
+			}
+		});
+		
+		
 }]);
+
+
+//全局设置项目根据经
+var SERVLET_CONTEXT="/XJSYS/";
 
 
 

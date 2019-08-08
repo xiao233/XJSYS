@@ -68,5 +68,15 @@ public class ConnectionManager {
 				log.error("关闭数据库连接失败： "+e.getMessage());
 			}
 	}
+
+	/**
+	 * 根据配置获取当前数据库名
+	 * 2019-06-06 11:47:04
+	 * @return
+	 */
+	public static Object getCurrentDatabase() {
+		// TODO Auto-generated method stub
+		return URL.substring(URL.lastIndexOf("/")+1,URL.indexOf("?")).trim();
+	}
 	
 }

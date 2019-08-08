@@ -49,14 +49,27 @@ public class ConvertToObjectUtils {
 							}else {
 								value += entry.getValue();
 							}
-							if(type.indexOf("String")>=0) {
+							if(!StringUtils.isEmpty(value)&&!value.trim().equals("null")) {
+								if(type.indexOf("String")>=0) {
+									field.set(temp, value);
+								}else if(type.indexOf("Integer")>=0) {
+									field.set(temp, Integer.parseInt(value));
+								}else if(type.indexOf("Long")>=0) {
+									field.set(temp, Long.parseLong(value));
+								}else if(type.indexOf("Float")>=0) {
+									field.set(temp, Float.parseFloat(value));
+								}else if(type.indexOf("Double")>=0) {
+									field.set(temp, Double.parseDouble(value));
+								}else if(type.indexOf("Timestamp")>=0) {
+									field.set(temp,Timestamp.valueOf(value));
+								}else if(type.indexOf("java.util.Date")>=0) {
+									field.set(temp,TimeUtils.getTimeByFormat(value, TimeUtils.FORMAT_DATE_TIME24));
+								}
+								
+							}else if(value.trim().equals("null")){
+								field.set(temp, null);
+							}else {
 								field.set(temp, value);
-							}else if(type.indexOf("Integer")>=0) {
-								field.set(temp, Integer.parseInt(value));
-							}else if(type.indexOf("Double")>=0) {
-								field.set(temp, Double.parseDouble(value));
-							}else if(type.indexOf("Timestamp")>=0) {
-								field.set(temp,Timestamp.valueOf(value));
 							}
 							break;
 						}

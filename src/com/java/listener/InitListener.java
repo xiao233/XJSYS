@@ -9,6 +9,11 @@ import org.springframework.web.context.ContextLoaderListener;
 
 import com.java.utils.PropertiesUtils;
 
+/**
+ * 用于程序启动初始化工作
+ * @author xjl
+ * 2019-06-03 09:52:06
+ */
 public class InitListener extends ContextLoaderListener{
 	
 	Logger log = Logger.getLogger(InitListener.class);
@@ -21,7 +26,7 @@ public class InitListener extends ContextLoaderListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		super.contextInitialized(event);
+		//super.contextInitialized(event);
 		try {
 			log.info("开始初始化-------------");
 			PropertiesUtils.initConfigProperties();

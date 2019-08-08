@@ -1,5 +1,6 @@
 package com.java.utils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,5 +60,11 @@ public class UtilsTest {
 		for(java.util.Map.Entry<String,String> entry: valueMap1.entrySet()) {
 			System.out.println(entry.getKey()+"--"+entry.getValue());
 		}
+	}
+	
+	@Test
+	public void testTimeUtils() {
+		Date date = TimeUtils.getTimeByFormat("2019-06-06 09:36:44", TimeUtils.FORMAT_DATE_TIME24);
+		System.out.println(TimeUtils.getTimeByFormat(date, TimeUtils.FORMAT_DATE_TIME24));
 	}
 }

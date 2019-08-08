@@ -1,6 +1,7 @@
 package com.java.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -69,5 +70,24 @@ public class TimeUtils {
 		dateFormat = new SimpleDateFormat(format);
 		
 		return dateFormat.format(new Date());
+	}
+
+	/**
+	 * 以固定格式转成Date
+	 * 2019-01-30 15:02:02
+	 * @param time 时间
+	 * @param format 时间格式(可从本类获取，也可自定义)
+	 * @return
+	 */
+	public static Date getTimeByFormat(String time, String format) {
+		// TODO Auto-generated method stub
+		
+		dateFormat = new SimpleDateFormat(format);
+		try {
+			return dateFormat.parse(time);
+		} catch (ParseException e) {
+			log.error("时间转换错误："+e.getMessage());
+		}
+		return null;
 	}
 }

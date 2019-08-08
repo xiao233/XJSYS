@@ -33,3 +33,17 @@
 .xj-query-bar input{
 	width:100%;
 }
+
+
+
+.xj-query-table{
+	margin-top:20px;
+}
+
+.xj-query-table select{
+	width:80%;
+}
+
+.xj-query-btn{
+	margin-left:40px;
+}

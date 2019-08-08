@@ -1,0 +1,87 @@
+<meta charset="UTF-8">
+<div  ng-init="init()">
+	<div class=" content-header font-style1" >
+		<span class="margin-left-style1">XR平台 / 系统管理 / 地址信息管理/</span>
+	</div>
+	
+	<div class="xj-query-table">
+		<table class="table table-striped table-hover table-bordered">
+			<form id="qryForm">
+				<tr>
+					<td>国家:</td>
+					<td>
+						<select ng-model="tableName">
+	            			<option value="">-----请选择-----</option>
+	            			<option value="{{fileType.cfgValue}}" ng-repeat="fileType in fileTypes">{{fileType.cfgValue}}</option>
+	           			 </select>
+					</td>
+					<td>省份:</td>
+					<td>
+						<select ng-model="tableName">
+			            	<option value="">-----请选择-----</option>
+			            </select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>城市:</td>
+					<td>
+						<select ng-model="tableName">
+	            			<option value="">-----请选择-----</option>
+	           			 </select>
+					</td>
+					<td>县/区:</td>
+					<td>
+						<select ng-model="tableName">
+			            	<option value="">-----请选择-----</option>
+			            </select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>乡/镇:</td>
+					<td>
+						<select ng-model="tableName">
+	            			<option value="">-----请选择-----</option>
+	           			 </select>
+					</td>
+					<td>街道:</td>
+					<td>
+						<select ng-model="tableName">
+			            	<option value="">-----请选择-----</option>
+			            </select>
+					</td>
+				</tr>
+				
+			</form>
+		</table>
+		<button  ng-click="searchInfCon()" class="btn btn-success xj-query-btn">查 询</button>
+	</div>
+	
+	
+	<div class="cut-off-line"></div>
+	
+	<div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="success">
+					<th style="display: none;"></th>
+					<th class="text-center">国家</th>
+					<th class="text-center">省份</th>
+					<th class="text-center">城市</th>
+					<th class="text-center">县/区</th>
+					<th class="text-center">乡/镇</th>
+					<th class="text-center">街道</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="cut-off-line"></div>
+	<div ng-include="'views/common/operate.html'"></div>
+	<div ng-include="'views/common/page.html'"></div>
+	
+</div>
